@@ -1,0 +1,75 @@
+{
+  "name": "acend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@bootstrap-styled/provider": "^2.0.3",
+    "@bootstrap-styled/v4": "^3.4.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-svg-core": "^1.3.0-beta2",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@tippyjs/react": "^4.2.5",
+    "add": "^2.0.6",
+    "axios": "^0.24.0",
+    "babel-plugin-macros": "^3.1.0",
+    "bootstrap": "4.6.0",
+    "bootstrap-styled": "^2.7.2",
+    "font-awesome": "^4.7.0",
+    "framer-motion": "^4.1.17",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dates": "^21.8.0",
+    "react-dom": "^17.0.2",
+    "react-popper": "1.3.6",
+    "react-redux": "^7.2.5",
+    "react-redux-form": "^1.16.14",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.3",
+    "react-select": "^5.2.1",
+    "react-tippy": "^1.4.0",
+    "reactstrap": "^8.9.0",
+    "sass": "^1.39.0",
+    "sass-extract": "^2.1.0",
+    "sass-extract-js": "^0.4.0",
+    "sass-extract-loader": "^1.1.0",
+    "styled-components": "^5.3.1",
+    "tippy.js": "^6.3.1",
+    "typeface-roboto": "^1.1.13",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "compile:sass:w": "sass src/sass/main.scss src/css/index.css -w",
+    "compile:sass": "sass src/sass/main.scss src/css/index.css",
+    "start": "set PORT=3001 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "sass-vars-to-js-loader": "^2.1.1"
+  }
+}

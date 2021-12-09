@@ -1,0 +1,69 @@
+@use "../../custom_BS" as *;
+
+#flights-nav {
+  font-size: 1rem;
+  #arrow,
+  #arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+  }
+
+  #arrow {
+    visibility: hidden;
+  }
+
+  #arrow::before {
+    width: 24px;
+    height: 24px;
+    top: -3px;
+    background: inherit;
+  }
+  svg {
+    color: $gray-700;
+  }
+
+  .btn {
+    letter-spacing: inherit;
+    border-radius: 1%;
+    font-size: 1rem;
+    border: 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  input:focus {
+    outline: 0;
+    border-bottom: 2px solid green;
+  }
+  input {
+    text-align: center;
+    width: 100%;
+    font-size: 1.15rem;
+    color: $gray-700;
+    border: 0;
+    text-align: center;
+    padding: 11px 11px 9px;
+  }
+
+  button.btn-sm {
+    width: 115px !important;
+  }
+}
+
+.search-input {
+  height: 90px;
+  background-color: white;
+  border-radius: 1%;
+  color: $gray-700;
+}
+
+.search-control-btn-lg {
+  width: 100%;
+  border-radius: 2px;
+  font-size: inherit !important;
+  text-align: center;
+}

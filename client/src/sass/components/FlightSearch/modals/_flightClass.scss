@@ -1,0 +1,63 @@
+@use "../../../custom_BS" as *;
+
+#flightClassModal {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.33);
+  width: 185px;
+  background-color: white;
+  position: relative;
+  top: 4px;
+  border-radius: 1%;
+
+  #arrow,
+  #arrow::before {
+    right: 39%;
+    width: 25px;
+    height: 25px;
+    top: -2px;
+    background: inherit;
+  }
+
+  #arrow {
+    visibility: hidden;
+  }
+
+  #arrow::before {
+    visibility: visible;
+    content: "";
+    transform: rotate(45deg);
+  }
+
+  Button {
+    &.type-button {
+      color: $gray-700;
+      border-radius: 1%;
+      &:hover {
+        background-color: $gray-400;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    &.selected {
+      background-color: $light-blue;
+      color: white;
+      &:focus {
+        background-color: $light-blue;
+      }
+      &:hover {
+        color: white;
+      }
+    }
+    &.selected-premium,
+    &.selected-premium:not(:active) {
+      background-color: $gray-900;
+      color: rgb(217, 221, 165);
+      &:focus {
+        background-color: $gray-900;
+      }
+      &:hover {
+        color: rgb(218, 224, 122);
+      }
+    }
+  }
+}

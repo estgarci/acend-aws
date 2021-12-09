@@ -1,0 +1,15 @@
+@use "../../custom_BS" as *;
+
+.main-nav {
+  letter-spacing: 0.33rem;
+  font-family: bc-alphapipe;
+  background-color: $background-transparent;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+
+  .navbar-brand {
+    color: $primary;
+    font-size: 2.4rem;
+    padding: 0px;
+  }
+}

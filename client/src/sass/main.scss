@@ -1,0 +1,17 @@
+// import custom styles for react-dates airbnb
+
+// import boostrap
+@use "custom_BS";
+// import base typography
+@use "base/typography.scss";
+// import components
+@use "components/app.scss";
+// @use 'components/animations.scss';
+@use "components/FlightSearch/flightsNav.scss";
+@use "components/header.scss";
+@use "components/Navbar/navBar.scss";
+@use "components/FlightSearch/modals/flightTravelers.scss";
+@use "components/FlightSearch/modals/flightClass.scss";
+@use "components/FlightSearch/modals/flightSuggestions.scss";
+@use "custom_react_dates.scss";
+
