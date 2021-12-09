@@ -7,48 +7,40 @@ const Currency = mongoose.Types.Currency;
 const airportSchema = new Schema({
     ident: {
         type: String,
-        required: true,
+        required: false,
         unique: true
     },
     type: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     name: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        required: true
+    },
+    elevation: {
+        type: String
     },
     continent: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     iso_country: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     iso_region: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     municipality: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
+    },
+    gps_code: {
+        type: String
     },
     local_code: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     coordinates: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     }
 });
 
