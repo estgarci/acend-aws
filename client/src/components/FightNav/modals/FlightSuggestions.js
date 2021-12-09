@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react'
 import axios from 'axios';
 import Tippy from '@tippyjs/react/headless';
 import { useSpring, motion } from "framer-motion";
+import { baseUrl } from '../../../shared/baseUrl'
 
 function Suggestions({onSuggestHandler, suggestions}) {
 
@@ -52,14 +53,16 @@ function FilterInput(props) {
   // }
 
   useEffect( async() => {
-    var response1 = await axios.get('mongodb://localhost:27017/acend/airports')
+    var response1 = await axios.get(baseUrl + 'api/airports')
     console.log('airports loaded')
     var normalAirports = response1.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
     setAirports(normalAirports)
 
-    var response = await axios.get('http://localhost:3005/countries')
-    console.log('countries loaded')
-    setCountries(response.data)
+    console.log(response1);
+
+    // var response = await axios.get('http://localhost:3005/countries')
+    // console.log('countries loaded')
+    // setCountries(response.data)
   },[])
   
   const onSuggestHandler = (text) => {
