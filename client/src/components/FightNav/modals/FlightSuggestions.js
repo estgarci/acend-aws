@@ -39,12 +39,12 @@ function FilterInput(props) {
   const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
 
-  // const loadAirports = async() => {
-  //   const response = await axios.get('http://localhost:3005/airports')
-  //   console.log('airports loaded')
-  //   var normalAirports = response.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
-  //   setAirports(normalAirports)
-  // }
+  const loadAirports = async() => {
+    const response = await axios.get(baseUrl + 'api/airports')
+    console.log('airports loaded', response.data)
+    var normalAirports = response.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
+    setAirports(normalAirports)
+  }
 
   // const loadCountries = async() => {
   //   const response = await axios.get('http://localhost:3005/countries')
@@ -53,12 +53,12 @@ function FilterInput(props) {
   // }
 
   useEffect( async() => {
-    var response1 = await axios.get(baseUrl + 'api/airports')
-    console.log('airports loaded')
-    var normalAirports = response1.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
-    setAirports(normalAirports)
+    loadAirports()
+    // var response1 = await axios.get(baseUrl + 'api/airports')
+    // console.log('airports loaded')
+    // var normalAirports = response1.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
+    // setAirports(normalAirports)
 
-    console.log(response1);
 
     // var response = await axios.get('http://localhost:3005/countries')
     // console.log('countries loaded')
