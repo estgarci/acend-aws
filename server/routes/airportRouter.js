@@ -16,22 +16,23 @@ airportRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post((req, res, next) => {
+.post(cors.corsWithOptions, (req, res, next) => {
     res.statusCode = 403;
     res.end('POST operation not supported on /airports');
 })
-.put((req, res) => {
+.put(cors.corsWithOptions,(req, res) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /airports');
 })
-.delete((req, res, next) => {
+.delete(cors.corsWithOptions, (req, res, next) => {
     res.statusCode = 403;
     res.end('DELETE operation not supported on /airports');
 });
 
 
 airportRouter.route('/:airportId')
-.get((req, res, next) => {
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.get(cors.cors, (req, res, next) => {
     Airport.findById(req.params.airportId)
     .then(airport => {
         res.statusCode = 200;
@@ -40,11 +41,11 @@ airportRouter.route('/:airportId')
     })
     .catch(err => next(err));
 })
-.post((req, res) => {
+.post(cors.corsWithOptions, (req, res) => {
     res.statusCode = 403;
     res.end(`POST operation not supported on /airports/${req.params.airportId}`);
 })
-.put((req, res, next) => {
+.put(cors.corsWithOptions, (req, res, next) => {
     Airport.findByIdAndUpdate(req.params.airportId, {
         $set: req.body
     }, { new: true })
@@ -55,7 +56,7 @@ airportRouter.route('/:airportId')
     })
     .catch(err => next(err));
 })
-.delete((req, res, next) => {
+.delete(cors.corsWithOptions, (req, res, next) => {
     Airport.findByIdAndDelete(req.params.airportId)
     .then(response => {
         res.statusCode = 200;
