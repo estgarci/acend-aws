@@ -1,13 +1,12 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Tippy from '@tippyjs/react/headless';
 import { useSpring, motion } from "framer-motion";
 import { baseUrl } from '../../../shared/baseUrl'
 
 function Suggestions({onSuggestHandler, suggestions}) {
-
+  
   const digitsRegex = new RegExp('d', "gi")
-
   if(suggestions.length){
     return(<div id="flightSuggestionModal" className="mr-1 ml-1 bg-white text-center">
             {suggestions.map((suggestion, i) => {
@@ -39,12 +38,29 @@ function FilterInput(props) {
   const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
 
-  const loadAirports = async() => {
-    const response = await axios.get(baseUrl + 'api/airports')
-    console.log('airports loaded', response.data)
-    var normalAirports = response.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
-    setAirports(normalAirports)
-  }
+
+//   const fetchAirports = async() => {
+
+//     return fetch(baseUrl + 'api/airports')
+//         .then(response => {
+//                 if (response.ok) {
+//                     console.log(response)
+//                     return response;
+//                 } else {
+//                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
+//                     error.response = response;
+//                     throw error;
+//                 }
+//             },
+//             error => {
+//                 const errMess = new Error(error.message);
+//                 throw errMess;
+//             }
+//         )
+//         .then(response => response.json())
+//         .then(airports => setAirports(airports))
+//         .catch(error => console.log(error));
+// };
 
   // const loadCountries = async() => {
   //   const response = await axios.get('http://localhost:3005/countries')
@@ -52,14 +68,26 @@ function FilterInput(props) {
   //   setCountries(response.data)
   // }
 
-  useEffect( async() => {
+  useEffect( async () => {
+    // fetchAirports()
+
+    async function loadAirports() {
+      const response = await axios.get(baseUrl + 'api/airports')
+      // console.log('airports loaded', response.data)
+      var normalAirports = response.data.filter( (airport) => (airport.type === 'large_airport' || airport.type === 'medium_airport'))
+      normalAirports = normalAirports.filter( airport => (airport.iata_code && airport.municipality && airport.name))
+      console.log(normalAirports)
+      setAirports(normalAirports)
+    }
     loadAirports()
-    // var response1 = await axios.get(baseUrl + 'api/airports')
-    // console.log('airports loaded')
-    // var normalAirports = response1.data.filter( (airport) => airport.type === 'large_airport' || airport.type === 'medium_airport' && airport.iata_code && airport.country)
-    // setAirports(normalAirports)
 
-
+    async function loadCountries(){
+      var response = await axios.get(baseUrl + 'api/countries')
+      console.log('countries loaded')
+      setCountries(response.data)
+    }
+    loadCountries()
+  
     // var response = await axios.get('http://localhost:3005/countries')
     // console.log('countries loaded')
     // setCountries(response.data)
@@ -92,7 +120,7 @@ function FilterInput(props) {
 
   const airportSearch = (text) => {
     const textRegex = new RegExp(`${text}`, "gi");
-    //first we search the list of all countries, incase user wants to go to france but doesent know the name of the airports
+    //first we search the list of all countries, incase user wants to go to france but doesent know the name of the airports in FR
     var countryMatch = countries.filter(country => 
       country.englishShortName.match(textRegex));
     if(countryMatch.length){

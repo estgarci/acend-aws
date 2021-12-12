@@ -1,11 +1,10 @@
-import React, { useState} from 'react';
-import { Col, Row, Button, ButtonGroup } from 'reactstrap';
+import React from 'react';
+import { Col, Row } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { DateRangePicker, SingleDatePicker } from 'react-dates';
 // import SingleDatePicker from '../src/components/SingleDatePicker';
 
-import mexicanFlag from '../../img/mexico.svg'
+// import mexicanFlag from '../../img/mexico.svg'
 
 const DisplaySearch = () => {
 

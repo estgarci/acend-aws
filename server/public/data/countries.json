@@ -1,4 +1,4 @@
- export const countries = [{
+[{
       "englishShortName": "Afghanistan",
       "frenchShortName": "Afghanistan (l')",
       "alpha2Code": "AF",

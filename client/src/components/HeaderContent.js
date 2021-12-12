@@ -1,8 +1,4 @@
-import React, {Component, useState} from 'react';
-
-import {H1, Small} from 'reactstrap';
-
-
+import React from 'react';
 
 class HeaderContent extends React.Component{
     render(){

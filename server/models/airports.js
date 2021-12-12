@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-require('mongoose-currency').loadType(mongoose);
-const Currency = mongoose.Types.Currency;
-
 const airportSchema = new Schema({
     ident: {
         type: String,
@@ -31,7 +28,8 @@ const airportSchema = new Schema({
         type: String
     },
     municipality: {
-        type: String
+        type: String,
+        required: true
     },
     gps_code: {
         type: String
