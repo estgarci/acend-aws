@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 
-import FlightsSearchComponent from './components/FightNav/FlightsNav';
-import NavigationComponent from './components/Navbar/Navbar';
-import DisplaySearch from './components/FightNav/DisplaySearch';
+// import FlightsSearchComponent from './components/FightNav/FlightsNav';
+// import NavigationComponent from './components/Navbar/Navbar';
 
-import { fetchCountries, fetchAirports } from '../redux/ActionCreators';
-import { actions } from 'react-redux-form';
+import FlightSearch from './FightNav/FlightSearchComponent';
+import Navbar from './Navbar/Navbar';
+
+import { fetchCountries, fetchAirports } from '../redux/actionCreators';
+
 
 
 const mapStateToProps = state => {
@@ -25,18 +27,18 @@ const mapDispatchToProps = {
 };
 
 class Main extends Component {
-    //when you render this main component, wait for the component to mount on to the DOM, when it does, go ahead and fetch the information form the database
+
     componentDidMount() {
         this.props.fetchAirports();
         this.props.fetchCountries();
     }
 
     render() {
+        return(
         <header className="App-header">
-            <NavigationComponent/>
-            <FlightsSearchComponent/>
-            <DisplaySearch/>
-        </header>
+            <Navbar/>
+            <FlightSearch airports={this.props.airports.airports} countries={this.props.countries.countries}/>
+        </header>)
     }
 }
 

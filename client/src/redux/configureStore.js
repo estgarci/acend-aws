@@ -14,10 +14,7 @@ export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             countries: Countries,
-            airports: Airports,
-            ...createForms({
-                queryForm : SearchFlights
-            })
+            airports: Airports
         }),  
         applyMiddleware(thunk, logger)
     );

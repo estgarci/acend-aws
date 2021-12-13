@@ -11,11 +11,13 @@ import 'tippy.js/animations/perspective.css';
 import HeaderContent from './components/HeaderContent';
 
 import React from 'react';
-import FlightsSearchComponent from './components/FightNav/FlightsNav';
-import NavigationComponent from './components/Navbar/Navbar';
-import DisplaySearch from './components/FightNav/DisplaySearch';
+// import FlightsSearchComponent from './components/FightNav/FlightsNav';
+// import NavigationComponent from './components/Navbar/Navbar';
+// import DisplaySearch from './components/FightNav/DisplaySearch';
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
+
+import Main from './components/MainComponent';
 
 library.add(faPlaneDeparture, faPlaneArrival, faCalendarAlt, faGlobeAmericas, faSignInAlt, faPlus, faMinus, faFulcrum);
 
@@ -26,12 +28,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <header className="App-header">
-          <NavigationComponent/>
-          <FlightsSearchComponent/>
-          <DisplaySearch/>
-          <HeaderContent className=""/>
-        </header>
+        <Main/>
       </Provider>
     );
   }
