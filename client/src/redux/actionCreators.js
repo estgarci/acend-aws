@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import axios from 'axios';
 
 // coutries //
 export const fetchCountries  = () => dispatch => {
@@ -75,45 +76,46 @@ export const addAirports = airports => ({
 });
 
 
-// flights //
-// export const fetchFlights  = () => dispatch => {
-//     dispatch(flightsLoading());
+export const fetchFlights  = query => dispatch => {
 
-//     return fetch('https://aeroapi.flightaware.com/aeroapi/airports/KLAX/flights/to/KPHX?type=Airline', {
-//             method: 'GET',
-//             headers: {
-//                 'X-API-KEY': 'sjgiJ8XGoDMz7AvxtcFSEGOlcwgvljyy'
-//             }
-//     })
-//     .then(response => {
-//             if (response.ok) {
-//                 return response;
-//             } else {
-//                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
-//                 error.response = response;
-//                 throw error;
-//             }
-//         },
-//         error => {
-//             const errMess = new Error(error.message);
-//             throw errMess;
-//         }
-//     )
+    dispatch(flightsLoading())
+    // &departure=${query.departure}&arrival=${query.arrival}`)
+    console.log(query.origin)
 
-//     .then(response => response.json())
+    // const uri = baseUrl +  'api/flights?origin=' + query.origin + '&destination=' + query.destination;
+    // const otheruri = baseUrl + `api/flights?origin=${query.origin}&destination=${query.destination}`
+
+    // console.log(uri, otheruri)
     
-//     .then(flights => dispatch(addFlights(flights)))
-//     .catch(error => dispatch(flightsFailed(error.message)));
-// }
-// export const flightsLoading = () => ({
-//     type: actionTypes.FLIGHTS_LOADING
-// });
-// export const flightsFailed = errMess => ({
-//     type: actionTypes.FLIGHTS_FAILED,
-//     payload: errMess
-// });
-// export const addFlights = flights => ({
-//     type: actionTypes.ADD_FLIGHTS,
-//     payload: flights
-// });
+    return fetch(baseUrl + `api/flights?origin=${query.origin}&destination=${query.destination}`)
+    .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+            const errMess = new Error(error.message);
+            throw errMess;
+        }
+    )
+    .then(response => response.json())
+    .then(flights => dispatch(addFlights(flights)))
+    .catch(error => dispatch(flightsFailed(error.message)));
+}
+
+export const flightsLoading = () => ({
+    type: actionTypes.FLIGHTS_LOADING
+});
+export const flightsFailed = errMess => ({
+    type: actionTypes.FLIGHTS_FAILED,
+    payload: errMess
+});
+export const addFlights = flights => ({
+    type: actionTypes.ADD_FLIGHTS,
+    payload: flights
+});
 

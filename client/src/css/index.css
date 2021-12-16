@@ -10001,7 +10001,7 @@ body {
 #flights-nav input {
   text-align: center;
   width: 100%;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #495057;
   border: 0;
   text-align: center;
@@ -10026,7 +10026,6 @@ body {
 }
 
 .header-main {
-  position: relative;
   margin-top: 8rem;
   background-color: rgba(229, 231, 250, 0.75);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
@@ -10181,6 +10180,14 @@ body {
   font-weight: 400;
 }
 
+#flights-display {
+  margin-top: 2rem;
+  background-color: rgba(229, 231, 250, 0.75);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  padding: 1rem;
+}
+
 .CalendarDay__blocked_out_of_range,
 .CalendarDay__blocked_out_of_range:active,
 .CalendarDay__blocked_out_of_range:hover {
@@ -10217,7 +10224,6 @@ body {
 
 .DateInput {
   width: 128px;
-  font-size: 1.15rem;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Airports } from './airports';
 import { Countries } from './countries';
+import { Flights } from './flights';
 import { SearchFlights } from './forms';
 
 //create store function from redux, and pass it the initial function, then return the store
@@ -14,7 +15,8 @@ export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             countries: Countries,
-            airports: Airports
+            airports: Airports,
+            flights: Flights
         }),  
         applyMiddleware(thunk, logger)
     );

@@ -38,7 +38,37 @@ function AirportInput(props) {
   const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
 
-  useEffect( async () => {
+  useEffect( () => {
+
+    // const myHeaders = new Headers({
+    //   'x-apikey': 'AcI8LX5FloLLatSlDGLwwrq0tfWZ0AXd'
+    // });
+
+
+    // fetch('https://aeroapi.flightaware.com/aeroapi/airports/KLAX/flights/to/KPHX?type=Airline', {
+    //     headers: myHeaders
+    // }
+    // )
+    // .then(response => {
+    //     console.log(response);
+    //         if (response.ok) {
+    //             console.log(response);
+    //             return response;
+            
+    //         } else {
+    //             const error = new Error(`Error ${response.status}: ${response.statusText}`);
+    //             error.response = response;
+    //             throw error;
+    //         }
+    //     },
+    //     error => {
+    //         const errMess = new Error(error.message);
+    //         throw errMess;
+    //     }
+    // )
+
+
+
     // async function loadAirports() {
     //   const response = await axios.get(baseUrl + 'api/airports')
     //   // console.log('airports loaded', response.data)

@@ -61,7 +61,7 @@ const FlightsNavComponent = () => {
   return (
     <div id="flights-nav" className="container-sm text-nowrap header-main ">
       <Row id="topRow" className="mb-3">
-        <Col xs={12} sm={6}className="text-left">
+        <Col xs={12} sm={6} className="text-left">
           <ButtonGroup className="roundtripBtnGroup">
             <Button size="sm" outline color="primary" className="w115 text-left text-sm-center" onClick={() => setFlightSearchInfo(prevState => ({...prevState, ["oneWay"]: true }))} active={flightSearchInfo.oneWay === true}>Round Trip</Button>
             <Button size="sm" outline color="primary" className="w115 text-left text-sm-center" onClick={() => setFlightSearchInfo(prevState => ({...prevState, ["oneWay"]: false }))} active={flightSearchInfo.oneWay === false}>One Way</Button>

@@ -7,15 +7,15 @@ import { connect } from 'react-redux';
 
 import FlightSearch from './FightNav/FlightSearchComponent';
 import Navbar from './Navbar/Navbar';
-
-import { fetchCountries, fetchAirports } from '../redux/actionCreators';
-
+import FlightDisplay from './FightNav/FlightDisplay';
+import { fetchCountries, fetchAirports, fetchFlights } from '../redux/actionCreators';
 
 
 const mapStateToProps = state => {
     return{
         airports : state.airports,
-        countries : state.countries
+        countries : state.countries,
+        flights: state.flights
     }
 }
 //you can set this up as a function, or as an object... remember that this is the only way to map dispatch to props in react, this is only required when using redux with react....
@@ -23,7 +23,8 @@ const mapDispatchToProps = {
     // postComment: (campsiteId, rating, author, text) => (postComment(campsiteId, rating, author, text)),
     fetchAirports: () => (fetchAirports()),
     //resetFeedbackForm: () => (actions.reset('feedbackForm')),
-    fetchCountries: () => (fetchCountries())
+    fetchCountries: () => (fetchCountries()),
+    fetchFlights: query => (fetchFlights(query))
 };
 
 class Main extends Component {
@@ -37,7 +38,8 @@ class Main extends Component {
         return(
         <header className="App-header">
             <Navbar/>
-            <FlightSearch airports={this.props.airports.airports} countries={this.props.countries.countries}/>
+            <FlightSearch fetchFlights={this.props.fetchFlights} flights={this.props.flights.flights} airports={this.props.airports.airports} countries={this.props.countries.countries}/>
+            <FlightDisplay flights={this.props.flights}/>
         </header>)
     }
 }

@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const airportRouter = require('./routes/airportRouter');
 const countryRouter = require('./routes/countryRouter');
+const flightsRouter = require('./routes/flightsRouter');
 
 const mongoose = require('mongoose');
 
@@ -50,6 +51,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/airports', airportRouter);
 app.use('/api/countries', countryRouter);
+app.use('/api/flights', flightsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

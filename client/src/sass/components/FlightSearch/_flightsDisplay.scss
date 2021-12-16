@@ -1,0 +1,9 @@
+@use "../../custom_BS" as *;
+
+#flights-display {
+  margin-top: 2rem;
+  background-color: $background-transparent;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  padding: 1rem;
+}

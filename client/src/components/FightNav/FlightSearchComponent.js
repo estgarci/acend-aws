@@ -67,6 +67,13 @@ function FlightSearch(props) {
   const handleSubmit = (event) => {
     console.log(flightSearchInfo)
     console.log(props.countries)
+    console.log(props.airports)
+
+    props.fetchFlights({ 
+                        origin: flightSearchInfo.origin.ident,
+                        destination: flightSearchInfo.destination.ident,
+                        departure: flightSearchInfo.startDate,
+                        return: flightSearchInfo.endDate})
   }
 
   return (
