@@ -18,16 +18,20 @@ flightsRouter.route('/')
                             headers:{
                                 'x-apikey' : 'AcI8LX5FloLLatSlDGLwwrq0tfWZ0AXd'
                             }}).catch(err => next(err));
-        const json = await fetch_response.json().catch(err => next(err));
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        //responds with a list of flight objects
-        res.json(json.flights.map(item => item.segments[0]));
-    }
-    else{
-        res.statusCode = 404;
-        res.statusMessage = "Incorrect query parameters";
-    }
+        const jsonResponse = await fetch_response.json().catch(err => next(err));
+      
+        if (jsonResponse.flights.length){
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(jsonResponse.flights.map(item => item.segments[0]));
+        }else{
+            const err = new Error('Flights not found between origin and destination');
+            err.status = 404;
+            return next(err);
+        }
+        // res.json(jsonResponse.flights.map(item => item.segments[0]));
+       
+    } 
 })
 
 module.exports = flightsRouter;

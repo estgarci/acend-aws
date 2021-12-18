@@ -5,9 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FlightTravelers from './modals/FlightTravelers';
 import FlightClass from './modals/FlightClass';
 import FilterableInput from './modals/FlightSuggestions';
-
 import { DateRangePicker, SingleDatePicker } from 'react-dates';
-// import SingleDatePicker from '../src/components/SingleDatePicker';
 
 function FlightDates(props){
   const [focusedInput, setFocusedInput] = useState(null);

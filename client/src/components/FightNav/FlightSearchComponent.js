@@ -11,37 +11,36 @@ function FlightDates(props){
 
   return (
     <>
-            {props.showReturn ?
-             <DateRangePicker
-              className="mt-2"
-              startDateId="startDate"
-              endDateId="endDate"
-              startDate={props.flightSearchInfo.startDate}
-              endDate={props.flightSearchInfo.endDate}
-              onDatesChange={({ startDate, endDate }) => {props.setFlightSearchInfo(prevState => ({...prevState, ["startDate"]: startDate }));props.setFlightSearchInfo(prevState => ({...prevState, ["endDate"]: endDate }))}}
-              focusedInput={focusedInput}
-              onFocusChange={(focusedInput) => { setFocusedInput(focusedInput)}}
-              numberOfMonths={2}
-              keepOpenOnDateSelect
-            />:
-            <SingleDatePicker
-              className="mt-2"
-              startDateId="startDate"
-              date={props.flightSearchInfo.startDate} // momentPropTypes.momentObj or null
-              onDateChange={startDate => props.setFlightSearchInfo(prevState => ({...prevState, ["startDate"]: startDate }))} // PropTypes.func.isRequired
-              focused={focusedInput} // PropTypes.bool
-              onFocusChange={ ({focused})  => setFocusedInput(focused)} // PropTypes.func.isRequired
-               // PropTypes.string.isRequired,
-              autoFocus 
-            />}
-      </>
+      {props.showReturn ?
+        <DateRangePicker
+        className="mt-2"
+        startDateId="startDate"
+        endDateId="endDate"
+        startDate={props.flightSearchInfo.startDate}
+        endDate={props.flightSearchInfo.endDate}
+        onDatesChange={({ startDate, endDate }) => {props.setFlightSearchInfo(prevState => ({...prevState, ["startDate"]: startDate }));props.setFlightSearchInfo(prevState => ({...prevState, ["endDate"]: endDate }))}}
+        focusedInput={focusedInput}
+        onFocusChange={(focusedInput) => { setFocusedInput(focusedInput)}}
+        numberOfMonths={2}
+        keepOpenOnDateSelect
+      />:
+      <SingleDatePicker
+        className="mt-2"
+        startDateId="startDate"
+        date={props.flightSearchInfo.startDate}
+        onDateChange={startDate => props.setFlightSearchInfo(prevState => ({...prevState, ["startDate"]: startDate }))} // PropTypes.func.isRequired
+        focused={focusedInput}
+        onFocusChange={ ({focused})  => setFocusedInput(focused)}
+        // PropTypes.string.isRequired
+        autoFocus 
+      />}
+    </>
   );
 }
 
 function FlightSearch(props) {
-  // buttons&toggle states
-  const [visibleModal, setVisibleModal] = useState(null);
 
+  const [visibleModal, setVisibleModal] = useState(null);
   const [flightSearchInfo, setFlightSearchInfo] = useState({
     flightClass: 'economy',
     roundTrip: true,
@@ -56,25 +55,22 @@ function FlightSearch(props) {
     endDate: null
   });
 
-  const handleInputChange = (event) => {
-    // const target = event.target;
-    // const name = target.name;
-    // const value = target.value;
-
-    // setFlightSearchInfo({[name]})
-  }
+  // const handleInputChange = (event) => {
+ 
+  // }
 
   const handleSubmit = (event) => {
     console.log(flightSearchInfo)
-    console.log(props.countries)
-    console.log(props.airports)
 
-    props.fetchFlights({ 
-                        origin: flightSearchInfo.origin.ident,
-                        destination: flightSearchInfo.destination.ident,
-                        departure: flightSearchInfo.startDate,
-                        return: flightSearchInfo.endDate})
-  }
+    if(flightSearchInfo.destination && flightSearchInfo.origin && flightSearchInfo.startDate){
+
+      props.fetchFlights({ 
+        origin: flightSearchInfo.origin.ident,
+        destination: flightSearchInfo.destination.ident,
+        departure: flightSearchInfo.startDate,
+        return: flightSearchInfo.endDate})
+      }
+    }
 
   return (
     <div id="flights-nav" className="container-sm text-nowrap header-main ">

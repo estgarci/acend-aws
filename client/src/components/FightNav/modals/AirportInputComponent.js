@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 import Tippy from '@tippyjs/react/headless';
 import { useSpring, motion } from "framer-motion";
-import { baseUrl } from '../../../shared/baseUrl'
 
 function Suggestions({onSuggestHandler, suggestions}) {
   
@@ -32,61 +30,9 @@ function Suggestions({onSuggestHandler, suggestions}) {
 }
 
 function AirportInput(props) {
-  const [airports, setAirports] = useState([]);
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState('');
-  const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
-
-  useEffect( () => {
-
-    // const myHeaders = new Headers({
-    //   'x-apikey': 'AcI8LX5FloLLatSlDGLwwrq0tfWZ0AXd'
-    // });
-
-
-    // fetch('https://aeroapi.flightaware.com/aeroapi/airports/KLAX/flights/to/KPHX?type=Airline', {
-    //     headers: myHeaders
-    // }
-    // )
-    // .then(response => {
-    //     console.log(response);
-    //         if (response.ok) {
-    //             console.log(response);
-    //             return response;
-            
-    //         } else {
-    //             const error = new Error(`Error ${response.status}: ${response.statusText}`);
-    //             error.response = response;
-    //             throw error;
-    //         }
-    //     },
-    //     error => {
-    //         const errMess = new Error(error.message);
-    //         throw errMess;
-    //     }
-    // )
-
-
-
-    // async function loadAirports() {
-    //   const response = await axios.get(baseUrl + 'api/airports')
-    //   // console.log('airports loaded', response.data)
-    //   var normalAirports = response.data.filter( (airport) => (airport.type === 'large_airport' || airport.type === 'medium_airport'))
-    //   normalAirports = normalAirports.filter( airport => (airport.iata_code && airport.municipality && airport.name))
-      
-    //   setAirports(normalAirports)
-    // }
-    // loadAirports()
-
-    // async function loadCountries(){
-    //   var response = await axios.get(baseUrl + 'api/countries')
-    //   // console.log('countries loaded')
-    //   setCountries(response.data)
-    // }
-    // loadCountries()
-
-  },[])
   
   const onSuggestHandler = (text, selectedAirport) => {
     setText(text);

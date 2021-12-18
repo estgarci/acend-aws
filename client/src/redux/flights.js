@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 
 export const Flights = (state = {
-        isLoading: true,
+        isLoading: false,
         errMess: null,
         flights: []
     }, action) => {

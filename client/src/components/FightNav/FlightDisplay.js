@@ -30,9 +30,8 @@ function RenderFlight({flight}) {
                     </Col>
                     <Col  sm={4} className='align-self-center text-center'>
                         {/* <Row className='justify-content-center h5'>Trip from</Row> */}
-                        <Row className='justify-content-center h4'>.00777 BTC</Row>
+                        <Row className='justify-content-center h4'>$777</Row>
                         <Button className='bg-secondary'>Book flight</Button>
-                        
                     </Col>
                 </Row>
             
@@ -42,44 +41,43 @@ function RenderFlight({flight}) {
 }
 
 function FlightDisplay(props) {
-
-    
+    //list of components
     const flights = props.flights.flights.map(flight => {
         return (
             <RenderFlight flight={flight}/>
         );
     });
 
-    if (props.flights.isLoading) {
+   if (props.flights.isLoading) {
         return (
             <div className='container'>
-                <div className='row'>
-                    <Loading />
+                <div className='row '>
+                    <Loading/>
                 </div>
             </div>
         );
     }
+
     if (props.flights.errMess) {
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col'>
-                        <h4>{props.flights.errMess}</h4>
+                    <div className='col header-main text-center'>
+                        <h4 className='text-primary'>No flights found </h4>
                     </div>
                 </div>
             </div>
         );
     }
+
+   
     return (
-        <div id="flights-display" className='container'>
+        flights.length ? 
+        <div id="flights-display" className='container '>
             {flights}
-        </div>
+        </div> : 
+        <></>
     );
 }
-
-
-
-
-
 
 export default FlightDisplay;
