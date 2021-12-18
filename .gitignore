@@ -1,3 +1,7 @@
 node_modules
-# bin/server.cert
-# bin/server.key
+
+#API KEYS
+.env
+
+bin/server.cert
+bin/server.key

@@ -2,6 +2,7 @@ const express = require('express');
 const flightsRouter = express.Router();
 const cors = require('./cors');
 const fetch = require('cross-fetch');
+require('dotenv').config();
 
 flightsRouter.route('/')
 .options(cors.corsWithOptions,  (req, res) => res.sendStatus(200))
@@ -16,7 +17,7 @@ flightsRouter.route('/')
         const api_endpoint = `/airports/${origin}/flights/to/${destination}?type=Airline`
         const fetch_response = await fetch(api_environment + api_endpoint, {
                             headers:{
-                                'x-apikey' : 'AcI8LX5FloLLatSlDGLwwrq0tfWZ0AXd'
+                                'x-apikey' : AERO_API_KEY
                             }}).catch(err => next(err));
         const jsonResponse = await fetch_response.json().catch(err => next(err));
       
