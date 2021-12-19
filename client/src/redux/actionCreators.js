@@ -75,18 +75,9 @@ export const addAirports = airports => ({
     payload: airports
 });
 
-
+//flights
 export const fetchFlights  = query => dispatch => {
-
     dispatch(flightsLoading())
-    // &departure=${query.departure}&arrival=${query.arrival}`)
-    console.log(query.origin)
-
-    // const uri = baseUrl +  'api/flights?origin=' + query.origin + '&destination=' + query.destination;
-    // const otheruri = baseUrl + `api/flights?origin=${query.origin}&destination=${query.destination}`
-
-    // console.log(uri, otheruri)
-    
     return fetch(baseUrl + `api/flights?origin=${query.origin}&destination=${query.destination}`)
     .then(response => {
             if (response.ok) {

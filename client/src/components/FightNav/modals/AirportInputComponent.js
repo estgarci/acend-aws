@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 import Tippy from '@tippyjs/react/headless';
 import { useSpring, motion } from "framer-motion";
-import { baseUrl } from '../../../shared/baseUrl'
 
 function Suggestions({onSuggestHandler, suggestions}) {
   
@@ -32,10 +30,8 @@ function Suggestions({onSuggestHandler, suggestions}) {
 }
 
 function AirportInput(props) {
-  const [airports, setAirports] = useState([]);
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState('');
-  const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
   
   const onSuggestHandler = (text, selectedAirport) => {
@@ -65,6 +61,7 @@ function AirportInput(props) {
   }
 
   const airportSearch = (text) => {
+    //using regex to perform string match
     const textRegex = new RegExp(`${text}`, "gi");
     //first we search the list of all props.countries, incase user wants to go to france but doesent know the name of the airports in FR
     var countryMatch = props.countries.filter(country => 

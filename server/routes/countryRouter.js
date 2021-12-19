@@ -29,7 +29,6 @@ countryRouter.route('/')
     res.end('DELETE operation not supported on /countriess');
 });
 
-
 countryRouter.route('/:countryId')
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
 .get(cors.cors, (req, res, next) => {

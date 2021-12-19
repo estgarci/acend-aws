@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'font-awesome/css/font-awesome.css';
+
+import 'font-awesome/css/font-awesome.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './css/index.css';

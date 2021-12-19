@@ -2,6 +2,7 @@ const express = require('express');
 const flightsRouter = express.Router();
 const cors = require('./cors');
 const fetch = require('cross-fetch');
+require('dotenv').config();
 
 flightsRouter.route('/')
 .options(cors.corsWithOptions,  (req, res) => res.sendStatus(200))
@@ -16,18 +17,22 @@ flightsRouter.route('/')
         const api_endpoint = `/airports/${origin}/flights/to/${destination}?type=Airline`
         const fetch_response = await fetch(api_environment + api_endpoint, {
                             headers:{
-                                'x-apikey' : 'AcI8LX5FloLLatSlDGLwwrq0tfWZ0AXd'
+                                'x-apikey' : AERO_API_KEY
                             }}).catch(err => next(err));
-        const json = await fetch_response.json().catch(err => next(err));
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        //responds with a list of flight objects
-        res.json(json.flights.map(item => item.segments[0]));
-    }
-    else{
-        res.statusCode = 404;
-        res.statusMessage = "Incorrect query parameters";
-    }
+        const jsonResponse = await fetch_response.json().catch(err => next(err));
+      
+        if (jsonResponse.flights.length){
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(jsonResponse.flights.map(item => item.segments[0]));
+        }else{
+            const err = new Error('Flights not found between origin and destination');
+            err.status = 404;
+            return next(err);
+        }
+        // res.json(jsonResponse.flights.map(item => item.segments[0]));
+       
+    } 
 })
 
 module.exports = flightsRouter;

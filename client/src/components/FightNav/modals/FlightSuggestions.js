@@ -38,42 +38,10 @@ function FilterInput(props) {
   const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
 
-
-//   const fetchAirports = async() => {
-
-//     return fetch(baseUrl + 'api/airports')
-//         .then(response => {
-//                 if (response.ok) {
-//                     console.log(response)
-//                     return response;
-//                 } else {
-//                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
-//                     error.response = response;
-//                     throw error;
-//                 }
-//             },
-//             error => {
-//                 const errMess = new Error(error.message);
-//                 throw errMess;
-//             }
-//         )
-//         .then(response => response.json())
-//         .then(airports => setAirports(airports))
-//         .catch(error => console.log(error));
-// };
-
-  // const loadCountries = async() => {
-  //   const response = await axios.get('http://localhost:3005/countries')
-  //   console.log('countries loaded')
-  //   setCountries(response.data)
-  // }
-
   useEffect( async () => {
     // fetchAirports()
-
     async function loadAirports() {
       const response = await axios.get(baseUrl + 'api/airports')
-      // console.log('airports loaded', response.data)
       var normalAirports = response.data.filter( (airport) => (airport.type === 'large_airport' || airport.type === 'medium_airport'))
       normalAirports = normalAirports.filter( airport => (airport.iata_code && airport.municipality && airport.name))
       console.log(normalAirports)
@@ -87,17 +55,12 @@ function FilterInput(props) {
       setCountries(response.data)
     }
     loadCountries()
-  
-    // var response = await axios.get('http://localhost:3005/countries')
-    // console.log('countries loaded')
-    // setCountries(response.data)
   },[])
   
   const onSuggestHandler = (text) => {
     setText(text);
     setSuggestions([])
   }
- 
   // tippy animation
   const springConfig = { damping: 15, stiffness: 300 };
   const initialScale = 0.5;
@@ -130,13 +93,15 @@ function FilterInput(props) {
     else{
       var matchesAirport = airports.filter(airport => 
         //compares to list of airports, returns list of airports
+        //match city
         airport.municipality.match(textRegex) ||
+        //match airport code
         airport.iata_code.match(textRegex) ||
+        //match airport name
         airport.name.match(textRegex) 
         
       );
       if (matchesAirport.length){
-
         return matchesAirport
       }
       else{
