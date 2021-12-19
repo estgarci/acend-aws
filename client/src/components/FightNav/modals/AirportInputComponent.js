@@ -37,56 +37,6 @@ function AirportInput(props) {
   const [suggestions, setSuggestions] = useState('');
   const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(false);
-
-  useEffect( () => {
-
-    // const myHeaders = new Headers({
-    //   'x-apikey': 'AcI8LX5FloLLatSlDGLwwrq0tfWZ0AXd'
-    // });
-
-
-    // fetch('https://aeroapi.flightaware.com/aeroapi/airports/KLAX/flights/to/KPHX?type=Airline', {
-    //     headers: myHeaders
-    // }
-    // )
-    // .then(response => {
-    //     console.log(response);
-    //         if (response.ok) {
-    //             console.log(response);
-    //             return response;
-            
-    //         } else {
-    //             const error = new Error(`Error ${response.status}: ${response.statusText}`);
-    //             error.response = response;
-    //             throw error;
-    //         }
-    //     },
-    //     error => {
-    //         const errMess = new Error(error.message);
-    //         throw errMess;
-    //     }
-    // )
-
-
-
-    // async function loadAirports() {
-    //   const response = await axios.get(baseUrl + 'api/airports')
-    //   // console.log('airports loaded', response.data)
-    //   var normalAirports = response.data.filter( (airport) => (airport.type === 'large_airport' || airport.type === 'medium_airport'))
-    //   normalAirports = normalAirports.filter( airport => (airport.iata_code && airport.municipality && airport.name))
-      
-    //   setAirports(normalAirports)
-    // }
-    // loadAirports()
-
-    // async function loadCountries(){
-    //   var response = await axios.get(baseUrl + 'api/countries')
-    //   // console.log('countries loaded')
-    //   setCountries(response.data)
-    // }
-    // loadCountries()
-
-  },[])
   
   const onSuggestHandler = (text, selectedAirport) => {
     setText(text);
@@ -179,7 +129,7 @@ function AirportInput(props) {
                      id="airport"
                      name="airport"
                      className='b-0'
-                     placeholder="City or Airport"
+                     placeholder="Airport, Country or city"
                      onChange={ e => { onChangeHandler(e.target.value) } }
                      value={text}>
               </input>
