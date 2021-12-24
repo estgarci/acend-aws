@@ -3,6 +3,8 @@ node_modules
 #API KEYS
 .env
 
+config.js
+
 bin/server.cert
 bin/server.key
 

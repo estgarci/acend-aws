@@ -2,10 +2,11 @@ const express = require('express');
 const flightsRouter = express.Router();
 const cors = require('./cors');
 const fetch = require('cross-fetch');
+const authenticate = require('../authenticate');
 
 flightsRouter.route('/')
 .options(cors.corsWithOptions,  (req, res) => res.sendStatus(200))
-.get(cors.cors, async (req, res, next) => {
+.get(cors.corsWithOptions, async (req, res, next) => {
     const origin = req.query.origin
     const destination = req.query.destination
     // const departure = req.params.departure

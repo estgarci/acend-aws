@@ -1,10 +1,16 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+// const FileStore = require('session-file-store')(session);
+const passport = require('passport');
+// const authenticate = require('./authenticate');
 const dotenv = require("dotenv")
 dotenv.config()
+const config = require('./config');
+
 
 
 var indexRouter = require('./routes/index');
@@ -15,7 +21,7 @@ const flightsRouter = require('./routes/flightsRouter');
 
 const mongoose = require('mongoose');
 
-const url = 'mongodb://localhost:27017/acend';
+const url = config.mongoUrl
 const connect = mongoose.connect(url, {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -29,9 +35,9 @@ connect.then(() => console.log('Connected correctly to server'),
 );
 
 var app = express();
-
-//Secure traffic only
+//Secure traffic only, catches any time of request , post, delete, any path
 app.all('*', (req, res, next) => {
+  //secure property is automatically set to true if its https, express helps us with this...
   if (req.secure) {
       return next();
   } else {
@@ -47,11 +53,36 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+
+// app.use(session({
+//   name: 'session-id',
+//   secret: '12345-67890-09876-54321',
+//   saveUninitialized: false, //when no updates are made, at the end of the request it wont be saved and no cookies will be sent to the client
+//   resave: false, // session doesnt get deleted 
+//   store: new FileStore() //creates a new file store to store in the server's hard disk instead of application memory 
+// }));
+app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/api/users', usersRouter);
+app.use('/users', usersRouter);
+
+// function auth(req, res, next) {
+//   console.log(req.user);
+
+//   if (!req.user) {
+//       const err = new Error('You are not authenticated!');                    
+//       err.status = 401;
+//       return next(err);
+//   } else {
+//       return next();
+//   }
+// }
+
+// app.use(auth);
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/api/airports', airportRouter);
 app.use('/api/countries', countryRouter);
 app.use('/api/flights', flightsRouter);
