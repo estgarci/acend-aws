@@ -4,6 +4,8 @@ import FlightSearch from './FightNav/FlightSearchComponent';
 import Navbar from './Navbar/Navbar';
 import FlightDisplay from './FightNav/FlightDisplay';
 import { fetchCountries, fetchAirports, fetchFlights, loginUser, logoutUser } from '../redux/actionCreators';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Home from './HomeComponent';
 
 const mapStateToProps = state => {
     return{
@@ -31,11 +33,27 @@ class Main extends Component {
     }
 
     render() {
+        //going through the render function every time there is a change, not suitable for our search bard
+        // const HomePage = () => {
+            
+        //     return (
+        //         <Home
+        //             campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
+        //             campsitesLoading={this.props.campsites.isLoading}
+        //             campsitesErrMess={this.props.campsites.errMess}
+        //             promotion={this.props.promotions.promotions.filter(promotion => promotion.featured)[0]}
+        //             promotionLoading={this.props.promotions.isLoading}
+        //             promotionErrMess={this.props.promotions.errMess}
+        //             partner={this.props.partners.partners.filter(partner => partner.featured)[0]}
+        //             partnerLoading={this.props.partners.isLoading}
+        //             partnerErrMess={this.props.partners.errMess}
+        //         />
+        //     );
+        // }
         return(
         <header className="App-header">
             <Navbar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser}/>
-            <FlightSearch fetchFlights={this.props.fetchFlights} flights={this.props.flights.flights} airports={this.props.airports.airports} countries={this.props.countries.countries}/>
-            <FlightDisplay flights={this.props.flights}/>
+            <Home fetchFlights={this.props.fetchFlights} flights={this.props.flights} airports={this.props.airports} countries={this.props.countries}/>
         </header>)
     }
 }

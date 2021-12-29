@@ -1,86 +1,44 @@
 import React, { Component } from 'react';
-import { Nav, NavLink, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,
+import ReactDOM from 'react-dom';
+import { Col, Row, Nav, NavLink, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,
   Button, Modal, ModalHeader, ModalBody,
   Form, FormGroup, Input, Label } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FacebookLogin from 'react-facebook-login';
 
-// const NavComponent = (props) => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const toggle = () => setIsOpen(!isOpen);
-//   console.log(props)
-//   return (
-//       <>
-//       <Navbar className="main-nav container-fluid pb-0 pt-0" light expand="md">
-//         <div class="container">
-//           <NavbarBrand id="title" href="/">
-//             Acend
-//           </NavbarBrand>
-//           <NavbarToggler onClick={toggle}/>
-//           <Collapse isOpen={isOpen} navbar>
-//             <Nav className="ml-auto" navbar>
-//               <NavItem className="mr-4">
-//                 <NavLink href="/components/"><FontAwesomeIcon className="mr-2" icon="globe-americas"></FontAwesomeIcon>English</NavLink>
-//               </NavItem>
-//               <NavItem>
-//                 <NavLink href="/components/"><FontAwesomeIcon className="mr-2" icon="sign-in-alt"></FontAwesomeIcon>Sign in</NavLink>
-//               </NavItem>
-//             </Nav>
-//             <Nav className="ml-auto" navbar>
-//               <NavItem>
-//                   { !props.auth.isAuthenticated 
-//                       ?
-//                       <Button outline onClick={toggle}>
-//                           <i className="fa fa-sign-in fa-lg" /> Login
-//                           {props.auth.isFetching 
-//                               ? <span className="fa fa-spinner fa-pulse fa-fw" />
-//                               : null
-//                           }
-//                       </Button>
-//                       :
-//                       <div>
-//                           <div className="navbar-text mr-3">{props.auth.user.username}</div>
-//                           <Button outline onClick={props.handleLogout}>
-//                               <span className="fa fa-sign-out fa-lg"></span> Logout
-//                               {props.auth.isFetching 
-//                                   ? <span className="fa fa-spinner fa-pulse fa-fw"/>
-//                                   : null
-//                               }
-//                           </Button>
-//                       </div>
-//                   }
-//               </NavItem>
-//           </Nav>
-//           </Collapse>
-//         </div>
-//       </Navbar>
-//       <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-//           <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-//           <ModalBody>
-//               <Form onSubmit={this.handleLogin}>
-//                   <FormGroup>
-//                       <Label htmlFor="username">Username</Label>
-//                       <Input type="text" id="username" name="username"
-//                           innerRef={input => this.username = input} />
-//                   </FormGroup>
-//                   <FormGroup>
-//                       <Label htmlFor="password">Password</Label>
-//                       <Input type="password" id="password" name="password"
-//                           innerRef={input => this.password = input} />
-//                   </FormGroup>
-//                   <FormGroup check>
-//                       <Label check>
-//                           <Input type="checkbox" name="remember"
-//                               innerRef={input => this.remember = input} />
-//                           Remember me
-//                       </Label>
-//                   </FormGroup>
-//                   <Button type="submit" value="submit" color="primary">Login</Button>
-//               </Form>
-//           </ModalBody>
-//       </Modal>
-//       </>
-//   );
-// }
+export function ContWithFacebook() {
+  const btnStyle = {    'backgroundColor': 'rgb(24, 119, 242)',
+      'borderRadius': 'inherit',
+      'fontSize': '1rem',
+      'border':'0',
+      'left': '0',
+     ' opacity': '0',
+     ' position': 'absolute',
+     ' top': '0',
+     'width': '100%',
+     'textTransform': 'capitalize'}
+
+
+  const responseFacebook = (response) => {
+        console.log(response);
+        if(response){
+          console.log('welcome', response.name);
+        }
+  }
+
+  return (
+    <FacebookLogin
+                  appId="353877233072604"
+                  autoLoad={true}
+                  size='medium'
+                  fields="name"
+                  scope="public_profile"
+                  callback={responseFacebook}
+                  textButton='Continue with Facebook'
+                  buttonStyle={btnStyle}
+                  icon="fa-facebook" />
+  )
+}
 
 class NavComponent extends Component {
 
@@ -121,80 +79,84 @@ class NavComponent extends Component {
       this.props.logoutUser();
   }
 
+  
+
   render() {
+
+
+
+
       return (
           <React.Fragment>
               <Navbar className="main-nav container-fluid pb-0 pt-0" light expand="md">
-              <div class="container">
+              <div className="container p-0">
                 <NavbarBrand id="title" href="/">
                   Acend
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggleNav}/>
                 <Collapse isOpen={this.state.isNavOpen} navbar>
-                  <Nav className="ml-auto" navbar>
-                    <NavItem className="mr-4">
-                      <NavLink href="/components/"><FontAwesomeIcon className="mr-2" icon="globe-americas"></FontAwesomeIcon>English</NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink href="/components/"><FontAwesomeIcon className="mr-2" icon="sign-in-alt"></FontAwesomeIcon>Sign in</NavLink>
-                    </NavItem>
-                  </Nav>
-                  <Nav className="ml-auto" navbar>
-                    <NavItem>
-                        { !this.props.auth.isAuthenticated 
-                            ?<>
-                            <Button outline onClick={this.toggleModal}>
-                                <i className="fa fa-sign-in fa-lg" /> Login
+                  <Nav navbar className="ml-auto justify-content-around">
+                    <NavItem className="d-block p-2">
+                    { !this.props.auth.isAuthenticated?
+                
+                        
+                          <Button size='md' color='outline-dark' onClick={this.toggleModal}>
+                          <FontAwesomeIcon className="mr-2" icon="sign-in-alt"></FontAwesomeIcon>Log in
+                          </Button>
+                          
+                      :
+                        <div>
+                            <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
+                            <Button outline onClick={this.props.handleLogout}>
+                                <span className="fa fa-sign-out fa-lg"></span> Logout
                                 {this.props.auth.isFetching 
-                                    ? <span className="fa fa-spinner fa-pulse fa-fw" />
+                                    ? <span className="fa fa-spinner fa-pulse fa-fw"/>
                                     : null
                                 }
                             </Button>
-                            <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                            </>
-                            :
-                            <div>
-                                <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
-                                <Button outline onClick={this.props.handleLogout}>
-                                    <span className="fa fa-sign-out fa-lg"></span> Logout
-                                    {this.props.auth.isFetching 
-                                        ? <span className="fa fa-spinner fa-pulse fa-fw"/>
-                                        : null
-                                    }
-                                </Button>
-                            </div>
-                        }
+                        </div>
+                      }
                     </NavItem>
-                </Nav>
+                    <NavItem className="d-block py-2 pl-2 pr-0">
+                        <Button><FontAwesomeIcon className="mr-2" icon="level-up-alt"></FontAwesomeIcon>Sign up</Button>
+                      </NavItem>
+                    </Nav>
                 </Collapse>
               </div>
             </Navbar>
-            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-                <ModalBody>
-                    <Form onSubmit={this.handleLogin}>
-                        <FormGroup>
-                            <Label htmlFor="username">Username</Label>
-                            <Input type="text" id="username" name="username"
-                                innerRef={input => this.username = input} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor="password">Password</Label>
-                            <Input type="password" id="password" name="password"
-                                innerRef={input => this.password = input} />
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="checkbox" name="remember"
-                                    innerRef={input => this.remember = input} />
-                                Remember me
-                            </Label>
-                        </FormGroup>
-                        <Button type="submit" value="submit" color="primary">Login</Button>
-                    </Form>
+            {/* *****modal***** */}
+            <Modal size='md' isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalBody className=''>
+                    <Row className="">
+                      <Col xs='6' className=''>
+                        <ContWithFacebook/>
+                      </Col>
+                      <Col xs='6' className='align-self-center'>
+                        <Row className="justify-content-center"><Form className='' onSubmit={this.handleLogin}>
+                          <FormGroup>
+                              <Label htmlFor="username">Username</Label>
+                              <Input className="" type="text" id="username" name="username"
+                                  innerRef={input => this.username = input} />
+                          </FormGroup>
+                          <FormGroup>
+                              <Label htmlFor="password">Password</Label>
+                              <Input className="" type="password" id="password" name="password"
+                                  innerRef={input => this.password = input} />
+                          </FormGroup>
+                          <FormGroup check>
+                              <Label check>
+                                  <Input className="" type="checkbox" name="remember"
+                                      innerRef={input => this.remember = input} />
+                                  Remember me
+                              </Label>
+                          </FormGroup>
+                          <Button className="my-2 text-center" type="submit" value="submit" color="primary">Login</Button>
+                          
+                      </Form></Row>
+                      </Col>
+                    </Row>
                 </ModalBody>
             </Modal>
-
           </React.Fragment>
       );
   }

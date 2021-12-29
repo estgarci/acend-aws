@@ -16,6 +16,7 @@ function FlightTypeChild(props) {
                 <div id="arrow" data-popper-arrow=""></div>
                 <h5>Flight Class</h5>
                 <hr style={{width: 90+'%'}}/>
+                
                 <Button active color="white" className={(selected === "Economy") ? selectButtonStyle + "selected": selectButtonStyle} onClick={()=>toggleSelection("Economy")}>Economy</Button>
                 <Button color="white" className={(selected === "Business") ? selectButtonStyle + "selected": selectButtonStyle} onClick={()=>toggleSelection("Business")}>Business</Button>
                 <Button active={true} color="white" className={(selected === "Premium") ? selectButtonStyle + "selected-premium": selectButtonStyle} onClick={()=>toggleSelection("Premium")}>Premium</Button>

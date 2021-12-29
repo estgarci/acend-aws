@@ -13,7 +13,6 @@ function FlightDates(props){
     <>
       {props.showReturn ?
         <DateRangePicker
-        className="mt-2"
         startDateId="startDate"
         endDateId="endDate"
         startDate={props.flightSearchInfo.startDate}
@@ -25,7 +24,7 @@ function FlightDates(props){
         keepOpenOnDateSelect
       />:
       <SingleDatePicker
-        className="mt-2"
+        
         startDateId="startDate"
         date={props.flightSearchInfo.startDate}
         onDateChange={startDate => props.setFlightSearchInfo(prevState => ({...prevState, ["startDate"]: startDate }))} // PropTypes.func.isRequired
@@ -38,7 +37,7 @@ function FlightDates(props){
   );
 }
 
-function FlightSearch(props) {
+const FlightSearch = (props) => {
 
   const [visibleModal, setVisibleModal] = useState(null);
   const [flightSearchInfo, setFlightSearchInfo] = useState({
@@ -137,7 +136,6 @@ function FlightSearch(props) {
       </Row>  
     </div>
   );
-}
+};
 
 export default FlightSearch
-

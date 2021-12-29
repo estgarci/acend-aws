@@ -2,9 +2,9 @@ import React from 'react';
 
 export const Loading = () => {
     return (
-        <div className="col text-center header-main">
-            <i className="fa fa-spinner fa-pulse fa-3x fa-fw text-primary" />
-            <p>Loading...</p>
+        <div className="text-center">
+            <i className="fa fa-spinner fa-pulse fa text-primary" />
+            <div>loading</div>
         </div>
     );
 };

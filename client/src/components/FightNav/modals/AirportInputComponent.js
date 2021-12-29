@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Tippy from '@tippyjs/react/headless';
 import { useSpring, motion } from "framer-motion";
+import { Loading } from '../../LoadingComponent';
 
-function Suggestions({onSuggestHandler, suggestions}) {
-  
+function Suggestions({airports, onSuggestHandler, suggestions}) {
   const digitsRegex = new RegExp('d', "gi")
   if(suggestions.length){
     return(<div id="flightSuggestionModal" className="mr-1 ml-1 bg-white text-center">
@@ -17,23 +17,29 @@ function Suggestions({onSuggestHandler, suggestions}) {
               if (name.length > 30){
                 codeNameLoc = code + name.slice(0, 30) + '.' + location
               }
-              return (<div key={i} class='suggestion' onClick={() => onSuggestHandler(suggestion.iata_code + ' - ' + suggestion.name, suggestion)}>
+              return (<div key={i} className='suggestion' onClick={() => onSuggestHandler(suggestion.iata_code + ' - ' + suggestion.name, suggestion)}>
                         {codeNameLoc}
                       </div>)
             })}
           </div> )
   }
+
+  if(airports.isLoading){
+    return (<div id="flightSuggestionModal" className="bg-white"><Loading/></div>);
+  }
+
   else{
-    return <></>
+    return (<div className="container"></div>);
   }
 
 }
 
 function AirportInput(props) {
+
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState('');
   const [visible, setVisible] = useState(false);
-  
+
   const onSuggestHandler = (text, selectedAirport) => {
     setText(text);
     props.setFlightSearchInfo((prevState) => ({...prevState, [props.direction]: selectedAirport}))
@@ -64,26 +70,23 @@ function AirportInput(props) {
     //using regex to perform string match
     const textRegex = new RegExp(`${text}`, "gi");
     //first we search the list of all props.countries, incase user wants to go to france but doesent know the name of the airports in FR
-    var countryMatch = props.countries.filter(country => 
+    var countryMatch = props.countries.countries.filter(country => 
       country.englishShortName.match(textRegex));
     if(countryMatch.length){
-      return props.airports.filter( airport => airport.iso_country === countryMatch[0].alpha2Code)
+      return props.airports.airports.filter( airport => airport.iso_country === countryMatch[0].alpha2Code)
     }
     //then we conduct a search on airports, city and ultimatelly code 
     else{
-      var matchesAirport = props.airports.filter(airport => 
+      var matchesAirport = props.airports.airports.filter(airport => 
         //compares to list of airports, returns list of airports
         airport.municipality.match(textRegex) ||
         airport.iata_code.match(textRegex) ||
-        airport.name.match(textRegex) 
-        
+        airport.name.match(textRegex)
       );
       if (matchesAirport.length){
-
         return matchesAirport
       }
       else{
-
         return false
       }
     }
@@ -108,9 +111,10 @@ function AirportInput(props) {
     }
 
   }
+
+  useEffect(()=>{onChangeHandler(text)}, [props.airports.airports])
   return ( 
           <Tippy
-              trigger='click'
               interactive={true}
               visible={visible}
               animation={true}
@@ -119,7 +123,7 @@ function AirportInput(props) {
               role="tooltip"
               onHide={onHide}
               render={attrs => <motion.div style={{ scale, opacity }} {...attrs} >
-                                  {<Suggestions suggestions={suggestions} onSuggestHandler={onSuggestHandler}/>}
+                                  {<Suggestions airports={props.airports} suggestions={suggestions} onSuggestHandler={onSuggestHandler}/>}
                                </motion.div>}
               >
               <input type="text"

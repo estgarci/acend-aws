@@ -137,7 +137,7 @@ export const loginUser = creds => dispatch => {
     return fetch(baseUrl + 'users/login', {
         method: 'POST',
         headers: { 
-            'Content-Type': 'application/json' 
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(creds)
     })
@@ -191,4 +191,66 @@ export const logoutUser = () => dispatch => {
     // dispatch(favoritesFailed('Error 401: Unauthorized'));
     dispatch(receiveLogout())
 }
+
+// // FACEBOOK AUTH
+// export const facebookLoginUser = creds => dispatch => {
+//     // We dispatch requestLogin to kickoff the call to the API
+//     dispatch(requestLogin(creds))
+
+
+
+
+
+   
+//     .then(response => {
+//             if (response.ok) {
+//                 return response;
+//             } else {
+//                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
+//                 error.response = response;
+//                 throw error;
+//             }
+//         },
+//         error => { throw error; }
+//     )
+//     .then(response => response.json())
+//     .then(response => {
+//         if (response.success) {
+//             // If login was successful, set the token in local storage
+//             localStorage.setItem('token', response.token);
+//             localStorage.setItem('creds', JSON.stringify(creds));
+//             // Dispatch the success action
+//             // dispatch(fetchFavorites());
+//             dispatch(receiveLogin(response));
+//         } else {
+//             const error = new Error('Error ' + response.status);
+//             error.response = response;
+//             throw error;
+//         }
+//     })
+//     .catch(error => dispatch(loginError(error.message)))
+// };
+
+// //handle login and authentication
+// export const facebookRequestLogout = () => {
+//     return {
+//         type: actionTypes.LOGOUT_REQUEST
+//     }
+// }
+  
+// export const facebookReceiveLogout = () => {
+//     return {
+//         type: actionTypes.LOGOUT_SUCCESS
+//     }
+// }
+
+// // Logs the user out
+// export const facebookLogoutUser = () => dispatch => {
+//     dispatch(requestLogout())
+//     localStorage.removeItem('token');
+//     localStorage.removeItem('creds');
+//     // dispatch(favoritesFailed('Error 401: Unauthorized'));
+//     dispatch(receiveLogout())
+// }
+
 
