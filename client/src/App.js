@@ -1,4 +1,6 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import { Component } from 'react';
 // import GlobalStyle from './globalStyles';
 // import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -13,7 +15,7 @@ import { ConfigureStore } from './redux/configureStore';
 import { BrowserRouter } from 'react-router-dom';
 import Main from './components/MainComponent';
 
-library.add(faPlaneDeparture, faPlaneArrival, faCalendarAlt, faGlobeAmericas, faSignInAlt, faPlus, faMinus, faFulcrum, faLevelUpAlt);
+library.add(fas, fab);
 
 const store = ConfigureStore();
 

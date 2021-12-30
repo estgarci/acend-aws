@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import FlightSearch from './FightNav/FlightSearchComponent';
 import Navbar from './Navbar/Navbar';
 import FlightDisplay from './FightNav/FlightDisplay';
-import { fetchCountries, fetchAirports, fetchFlights, loginUser, logoutUser } from '../redux/actionCreators';
+import { fetchCountries, fetchAirports, fetchFlights, loginUser, logoutUser, facebookLoginUser } from '../redux/actionCreators';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './HomeComponent';
 
@@ -23,6 +23,7 @@ const mapDispatchToProps = {
     fetchFlights: query => (fetchFlights(query)),
     loginUser: creds => (loginUser(creds)),
     logoutUser: () => (logoutUser()),
+    facebookLoginUser: token => (facebookLoginUser(token))
 };
 
 class Main extends Component {
@@ -52,7 +53,7 @@ class Main extends Component {
         // }
         return(
         <header className="App-header">
-            <Navbar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser}/>
+            <Navbar facebookLoginUser={this.props.facebookLoginUser}  auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser}/>
             <Home fetchFlights={this.props.fetchFlights} flights={this.props.flights} airports={this.props.airports} countries={this.props.countries}/>
         </header>)
     }

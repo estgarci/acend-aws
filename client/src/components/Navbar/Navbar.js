@@ -6,7 +6,7 @@ import { Col, Row, Nav, NavLink, Navbar, NavbarBrand, NavbarToggler, Collapse, N
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FacebookLogin from 'react-facebook-login';
 
-export function ContWithFacebook() {
+export function ContWithFacebook(props) {
   const btnStyle = {    'backgroundColor': 'rgb(24, 119, 242)',
       'borderRadius': 'inherit',
       'fontSize': '1rem',
@@ -20,16 +20,15 @@ export function ContWithFacebook() {
 
 
   const responseFacebook = (response) => {
-        console.log(response);
-        if(response){
-          console.log('welcome', response.name);
-        }
+    if(response){
+      props.facebookLoginUser(response)
+      props.toggleModal()
+    }
   }
 
   return (
     <FacebookLogin
                   appId="353877233072604"
-                  autoLoad={true}
                   size='medium'
                   fields="name"
                   scope="public_profile"
@@ -76,16 +75,11 @@ class NavComponent extends Component {
   }
 
   handleLogout() {
-      this.props.logoutUser();
+
+    this.props.logoutUser();
   }
 
-  
-
   render() {
-
-
-
-
       return (
           <React.Fragment>
               <Navbar className="main-nav container-fluid pb-0 pt-0" light expand="md">
@@ -94,42 +88,41 @@ class NavComponent extends Component {
                   Acend
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggleNav}/>
-                <Collapse isOpen={this.state.isNavOpen} navbar>
-                  <Nav navbar className="ml-auto justify-content-around">
-                    <NavItem className="d-block p-2">
+                <Collapse className="d-flex justify-content-end" isOpen={this.state.isNavOpen} navbar>
+                  <Nav navbar >
+                    <NavItem className="mr-2 ">
                     { !this.props.auth.isAuthenticated?
-                
-                        
                           <Button size='md' color='outline-dark' onClick={this.toggleModal}>
                           <FontAwesomeIcon className="mr-2" icon="sign-in-alt"></FontAwesomeIcon>Log in
                           </Button>
-                          
                       :
-                        <div>
-                            <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
-                            <Button outline onClick={this.props.handleLogout}>
-                                <span className="fa fa-sign-out fa-lg"></span> Logout
-                                {this.props.auth.isFetching 
-                                    ? <span className="fa fa-spinner fa-pulse fa-fw"/>
-                                    : null
-                                }
+                        <div className='d-flex text-right align-items-end'>
+                            <b className=''> {this.props.auth.user.name.split(' ')[0]}</b>
+                            <Button className='text-right pr-0 pb-0' color='link' onClick={this.handleLogout}>
+                              <FontAwesomeIcon className="" size="lg" icon="sign-out-alt"></FontAwesomeIcon>
                             </Button>
                         </div>
                       }
                     </NavItem>
-                    <NavItem className="d-block py-2 pl-2 pr-0">
-                        <Button><FontAwesomeIcon className="mr-2" icon="level-up-alt"></FontAwesomeIcon>Sign up</Button>
-                      </NavItem>
+                    { !this.props.auth.isAuthenticated?
+                        <NavItem className="">
+                          <Button>
+                            <FontAwesomeIcon className="mr-2" icon="level-up-alt"></FontAwesomeIcon>Sign up
+                          </Button>
+                        </NavItem>
+                      :
+                      <div></div>
+                    }
                     </Nav>
                 </Collapse>
               </div>
             </Navbar>
-            {/* *****modal***** */}
+            {/* *****M O D A L***** */}
             <Modal size='md' isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalBody className=''>
                     <Row className="">
                       <Col xs='6' className=''>
-                        <ContWithFacebook/>
+                        < ContWithFacebook toggleModal={this.toggleModal} facebookLoginUser={this.props.facebookLoginUser}/>
                       </Col>
                       <Col xs='6' className='align-self-center'>
                         <Row className="justify-content-center"><Form className='' onSubmit={this.handleLogin}>
@@ -151,7 +144,6 @@ class NavComponent extends Component {
                               </Label>
                           </FormGroup>
                           <Button className="my-2 text-center" type="submit" value="submit" color="primary">Login</Button>
-                          
                       </Form></Row>
                       </Col>
                     </Row>
