@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
+<<<<<<< HEAD
     username: {
         type: String,
         required: true
@@ -17,6 +18,8 @@ const userSchema = new Schema({
     },
     facebookId: String,
     githubId: String, 
+=======
+>>>>>>> parent of fc0819a (Implemented Facebook OAuth and Changed Navbar styles)
     admin: {
         type: Boolean,
         default: false

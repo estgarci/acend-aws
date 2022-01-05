@@ -256,40 +256,40 @@ export const facebookLoginUser = creds => dispatch => {
 // }
 
 // github AUTH
-// export const githubLoginUser = code => dispatch => {
-//     // We dispatch requestLogin to kickoff the call to the API
+export const githubLoginUser = code => dispatch => {
+    // We dispatch requestLogin to kickoff the call to the API
     
-//     dispatch(requestLogin(code))
-//     return fetch( baseUrl + `users/github/token?code=${code}`)
-//     .then(response => {
-//             if (response.ok) {
+    dispatch(requestLogin(code))
+    return fetch( baseUrl + `users/github/token?code=${code}`)
+    .then(response => {
+            if (response.ok) {
 
-//                 return response;
-//             } else {
-//                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
-//                 error.response = response;
-//                 throw error;
-//             }
-//         },
-//         error => { throw error; }
-//     )
-//     .then(response => response.json())
-//     .then(response => {
-//         if (response.success) {
-//             // If login was successful, set the token in local storage
-//             localStorage.setItem('token', response.token);
-//             // localStorage.setItem('creds', JSON.stringify(response.profile));
-//             // Dispatch the success action
-//             // dispatch(fetchFavorites());
-//             dispatch(receiveLogin(response));
-//         } else {
-//             const error = new Error('Error ' + response.status);
-//             error.response = response;
-//             throw error;
-//         }
-//     })
-//     .catch(error => dispatch(loginError(error.message)))
-// };
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => { throw error; }
+    )
+    .then(response => response.json())
+    .then(response => {
+        if (response.success) {
+            // If login was successful, set the token in local storage
+            localStorage.setItem('token', response.token);
+            // localStorage.setItem('creds', JSON.stringify(response.profile));
+            // Dispatch the success action
+            // dispatch(fetchFavorites());
+            dispatch(receiveLogin(response));
+        } else {
+            const error = new Error('Error ' + response.status);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(loginError(error.message)))
+};
 
 // //handle login and authentication
 // export const githubRequestLogout = () => {
