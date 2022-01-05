@@ -5,6 +5,10 @@ import { Col, Row, Nav, NavLink, Navbar, NavbarBrand, NavbarToggler, Collapse, N
   Form, FormGroup, Input, Label } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FacebookLogin from 'react-facebook-login';
+import LoginGithub from 'react-login-github';
+import axios from 'axios';
+import { baseUrl } from '../../shared/baseUrl';
+
 
 export function ContWithFacebook(props) {
   const btnStyle = {    'backgroundColor': 'rgb(24, 119, 242)',
@@ -21,6 +25,7 @@ export function ContWithFacebook(props) {
 
   const responseFacebook = (response) => {
     if(response){
+      console.log(response);
       props.facebookLoginUser(response)
       props.toggleModal()
     }
@@ -33,10 +38,62 @@ export function ContWithFacebook(props) {
                   fields="name"
                   scope="public_profile"
                   callback={responseFacebook}
-                  textButton='Continue with Facebook'
+                  textButton='Sign in with Facebook'
                   buttonStyle={btnStyle}
                   icon="fa-facebook" />
+    )
+}
+
+export function ContWithGithub(props) {
+
+  const responseGit = async(response) => {
+    if(response){
+      props.githubLoginUser(response.code)
+      console.log(response)
+      props.toggleModal()
+    }
+  }
+
+  return (<>
+    {/* <FontAwesomeIcon className="d-flex" color='black' icon="github"></FontAwesomeIcon> */}
+    <LoginGithub
+        clientId='2311bf273d646f269010'
+        size='medium'
+        onSuccess={responseGit}
+        className='github-login'
+  /></>
   )
+
+  // const signin = () => {
+  //   fetch( baseUrl + 'users/github/token')
+  //   .then(response => {
+  //           if (response.ok) {
+  //               console.log(response)
+  //               return response;
+  //           } else {
+  //               const error = new Error(`Error ${response.status}: ${response.statusText}`);
+  //               error.response = response;
+  //               throw error;
+  //           }
+  //       },
+  //       error => { throw error; }
+  //   )
+  //   .then(response => response.json())
+  //   .then(response => {
+  //       if (response.success) {
+  //           console.log(response.success)
+  //       } else {
+  //           const error = new Error('Error ' + response.status);
+  //           error.response = response;
+  //           throw error;
+  //       }
+  //   })
+  // }
+
+
+
+
+  // return (<Button onClick={signin}>button</Button>)
 }
 
 class NavComponent extends Component {
@@ -123,6 +180,7 @@ class NavComponent extends Component {
                     <Row className="">
                       <Col xs='6' className=''>
                         < ContWithFacebook toggleModal={this.toggleModal} facebookLoginUser={this.props.facebookLoginUser}/>
+                        <ContWithGithub githubLoginUser={this.props.githubLoginUser}/>
                       </Col>
                       <Col xs='6' className='align-self-center'>
                         <Row className="justify-content-center"><Form className='' onSubmit={this.handleLogin}>

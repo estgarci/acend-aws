@@ -10046,6 +10046,21 @@ body {
   padding: 0px;
 }
 
+.github-login {
+  color: white;
+  position: relative;
+  background-color: #151515;
+  border-radius: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
 #travelers-modal {
   background-color: white;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.33);

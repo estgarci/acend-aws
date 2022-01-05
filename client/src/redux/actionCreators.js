@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import axios from 'axios'
 
 // coutries //
 export const fetchCountries  = () => dispatch => {
@@ -247,6 +248,64 @@ export const facebookLoginUser = creds => dispatch => {
 
 // // Logs the user out
 // export const facebookLogoutUser = () => dispatch => {
+//     dispatch(requestLogout())
+//     localStorage.removeItem('token');
+//     localStorage.removeItem('creds');
+//     // dispatch(favoritesFailed('Error 401: Unauthorized'));
+//     dispatch(receiveLogout())
+// }
+
+// github AUTH
+// export const githubLoginUser = code => dispatch => {
+//     // We dispatch requestLogin to kickoff the call to the API
+    
+//     dispatch(requestLogin(code))
+//     return fetch( baseUrl + `users/github/token?code=${code}`)
+//     .then(response => {
+//             if (response.ok) {
+
+//                 return response;
+//             } else {
+//                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
+//                 error.response = response;
+//                 throw error;
+//             }
+//         },
+//         error => { throw error; }
+//     )
+//     .then(response => response.json())
+//     .then(response => {
+//         if (response.success) {
+//             // If login was successful, set the token in local storage
+//             localStorage.setItem('token', response.token);
+//             // localStorage.setItem('creds', JSON.stringify(response.profile));
+//             // Dispatch the success action
+//             // dispatch(fetchFavorites());
+//             dispatch(receiveLogin(response));
+//         } else {
+//             const error = new Error('Error ' + response.status);
+//             error.response = response;
+//             throw error;
+//         }
+//     })
+//     .catch(error => dispatch(loginError(error.message)))
+// };
+
+// //handle login and authentication
+// export const githubRequestLogout = () => {
+//     return {
+//         type: actionTypes.LOGOUT_REQUEST
+//     }
+// }
+  
+// export const githubReceiveLogout = () => {
+//     return {
+//         type: actionTypes.LOGOUT_SUCCESS
+//     }
+// }
+
+// // Logs the user out
+// export const githubLogoutUser = () => dispatch => {
 //     dispatch(requestLogout())
 //     localStorage.removeItem('token');
 //     localStorage.removeItem('creds');

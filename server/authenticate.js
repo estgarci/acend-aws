@@ -5,7 +5,9 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const User = require('./models/user');
 const FacebookTokenStrategy = require('passport-facebook-token'); //fb token strat
+const GitHubTokenStrategy = require('passport-github-token');
 const config = require('./config.js');
+const superAgent = require('superagent')
 
 //adding specific strategy that we would like to use, requires a verify callback func. Use the authenticate method
 //passport-local-mongoose helps us with this by adding that func
@@ -55,6 +57,21 @@ exports.verifyAdmin = (req, res, next) => {
     }
 };
 
+exports.exchangeCodeforBearer = (req, res, next) => {
+    superAgent
+        .post('https://github.com/login/oauth/access_token')
+        .send({
+            client_id: config.github.clientId,
+            client_secret: config.github.clientSecret,
+            code:req.body.code
+        })
+        .set('Accept', 'application/json')
+        .then(function(result){
+            req.setHeader('Authorization', 'Bearer ' + result.body.access_token)
+        })
+        .catch(err => next(err))
+}
+
 exports.verifyUser = passport.authenticate('jwt', {session: false});
 
 exports.facebookPassport = passport.use(
@@ -87,3 +104,54 @@ exports.facebookPassport = passport.use(
         }
     )
 );
+
+exports.githubPassport = passport.use(
+    new GitHubTokenStrategy(
+        {
+            clientID: config.github.clientId,
+            clientSecret: config.github.clientSecret,
+            
+        },
+        (accessToken, refreshToken, profile, next) => {
+            User.findOne({username: profile.username}, (err, user) => {
+                if (err) {
+                    console.log('an error occured finding user')
+                    return next(err, false);
+                }
+                if (!err && user) {
+                    console.log("user exists, returning that user")
+                    console.log(user)
+                    return next(null, user);
+                } else {
+                    console.log("no error, creating new user")
+                    user = new User({githubId:  profile.id});
+                    user.firstname = profile.name.givenName;
+                    user.lastname = profile.name.familyName;
+                    user.name = profile.name
+                    user.githubId = profile.id;
+                    user.save((err, user) => {
+                        if (err) {
+                            return next(err, false);
+                        } else {
+                            return next(null, user);
+                        }
+                    });
+                }
+            });
+        }
+    )
+);
+
+exports.getGithubUser = async (code) => {
+    const githubToken = await superAgent.post(
+        `https://github.com/login/oauth/access_token?client_id=${config.github.clientId}&client_secret=${config.github.clientSecret}&code=${code}`
+      )
+      .then((res) => res.data)
+      .catch((error) => {
+        throw error;
+      });
+
+    const decoded = querystring.parse(githubToken);
+
+    const accessToken = decoded.access_token;
+}

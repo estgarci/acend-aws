@@ -62,6 +62,7 @@ app.use(express.urlencoded({ extended: false }));
 //   resave: false, // session doesnt get deleted 
 //   store: new FileStore() //creates a new file store to store in the server's hard disk instead of application memory 
 // }));
+
 app.use(passport.initialize());
 // app.use(passport.session());
 
@@ -81,7 +82,8 @@ app.use('/users', usersRouter);
 // }
 
 // app.use(auth);
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('C:/Users/01est/Documents/learning/mywork/acend-aws/client/build'));
 
 app.use('/api/airports', airportRouter);
 app.use('/api/countries', countryRouter);
