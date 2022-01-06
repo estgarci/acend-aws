@@ -10,7 +10,7 @@ import axios from 'axios';
 import { baseUrl } from '../../shared/baseUrl';
 
 
-export function ContWithFacebook() {
+export function ContWithFacebook(props) {
   const btnStyle = {    'backgroundColor': 'rgb(24, 119, 242)',
       'borderRadius': 'inherit',
       'fontSize': '1rem',
@@ -34,7 +34,6 @@ export function ContWithFacebook() {
   return (
     <FacebookLogin
                   appId="353877233072604"
-                  autoLoad={true}
                   size='medium'
                   fields="name"
                   scope="public_profile"
@@ -64,44 +63,12 @@ export function ContWithGithub(props) {
         className='github-login'
   /></>
   )
-
-  // const signin = () => {
-  //   fetch( baseUrl + 'users/github/token')
-  //   .then(response => {
-  //           if (response.ok) {
-  //               console.log(response)
-  //               return response;
-  //           } else {
-  //               const error = new Error(`Error ${response.status}: ${response.statusText}`);
-  //               error.response = response;
-  //               throw error;
-  //           }
-  //       },
-  //       error => { throw error; }
-  //   )
-  //   .then(response => response.json())
-  //   .then(response => {
-  //       if (response.success) {
-  //           console.log(response.success)
-  //       } else {
-  //           const error = new Error('Error ' + response.status);
-  //           error.response = response;
-  //           throw error;
-  //       }
-  //   })
-  // }
-
-
-
-
-  // return (<Button onClick={signin}>button</Button>)
 }
 
 class NavComponent extends Component {
 
   constructor(props) {
       super(props);
-
       this.state = {
           isNavOpen: false,
           isModalOpen: false
@@ -130,6 +97,7 @@ class NavComponent extends Component {
       this.props.loginUser({username: this.username.value, password: this.password.value});
       event.preventDefault();
 
+
   }
 
   handleLogout() {
@@ -139,9 +107,7 @@ class NavComponent extends Component {
   
 
   render() {
-
-
-
+     
 
       return (
           <React.Fragment>
@@ -155,28 +121,21 @@ class NavComponent extends Component {
                   <Nav navbar className="ml-auto justify-content-around">
                     <NavItem className="d-block p-2">
                     { !this.props.auth.isAuthenticated?
-                
-                        
-                          <Button size='md' color='outline-dark' onClick={this.toggleModal}>
-                          <FontAwesomeIcon className="mr-2" icon="sign-in-alt"></FontAwesomeIcon>Log in
-                          </Button>
-                          
+                        <Button size='md' color='outline-dark' onClick={this.toggleModal}>
+                        <FontAwesomeIcon className="mr-2" icon="sign-in-alt"></FontAwesomeIcon>Log in
+                        </Button>
                       :
                         <div>
-                            <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
-                            <Button outline onClick={this.props.handleLogout}>
-                                <span className="fa fa-sign-out fa-lg"></span> Logout
-                                {this.props.auth.isFetching 
-                                    ? <span className="fa fa-spinner fa-pulse fa-fw"/>
-                                    : null
-                                }
+                            {this.props.auth.user.name.split(' ')[0]}
+                            <Button outline onClick={this.handleLogout}>
+                                <span className="fa fa-sign-out fa-lg"></span>
                             </Button>
                         </div>
                       }
                     </NavItem>
-                    <NavItem className="d-block py-2 pl-2 pr-0">
-                        <Button><FontAwesomeIcon className="mr-2" icon="level-up-alt"></FontAwesomeIcon>Sign up</Button>
-                      </NavItem>
+                    {/* <NavItem className="d-block py-2 pl-2 pr-0">
+                      <Button><FontAwesomeIcon className="mr-2" icon="level-up-alt"></FontAwesomeIcon>Sign up</Button>
+                    </NavItem> */}
                     </Nav>
                 </Collapse>
               </div>
@@ -186,7 +145,8 @@ class NavComponent extends Component {
                 <ModalBody className=''>
                     <Row className="">
                       <Col xs='6' className=''>
-                        <ContWithFacebook/>
+                        <ContWithFacebook facebookLoginUser={this.props.facebookLoginUser} toggleModal={this.toggleModal}/>
+                        <ContWithGithub githubLoginUser={this.props.githubLoginUser} toggleModal={this.toggleModal}/>
                       </Col>
                       <Col xs='6' className='align-self-center'>
                         <Row className="justify-content-center"><Form className='' onSubmit={this.handleLogin}>

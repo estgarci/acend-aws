@@ -42,6 +42,18 @@ export const Auth = (state = {
                 token: '',
                 user: null
             };
+        case actionTypes.GITHUB_LOGIN_REQUEST:
+            return {...state,
+                isLoading: true,
+                isAuthenticated: false,
+            };
+        case actionTypes.GITHUB_LOGIN_SUCCESS:
+            return {...state,
+                isLoading: false,
+                isAuthenticated: true,
+                errMess: '',
+                user: JSON.parse(action.profile)
+            };
         default:
             return state;
     }

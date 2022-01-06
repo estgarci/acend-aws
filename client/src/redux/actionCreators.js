@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { baseUrl } from '../shared/baseUrl';
-import axios from 'axios'
+
 
 // coutries //
 export const fetchCountries  = () => dispatch => {
@@ -259,11 +259,10 @@ export const facebookLoginUser = creds => dispatch => {
 export const githubLoginUser = code => dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     
-    dispatch(requestLogin(code))
+    dispatch(githubRequestLogin(code))
     return fetch( baseUrl + `users/github/token?code=${code}`)
     .then(response => {
             if (response.ok) {
-
                 return response;
             } else {
                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
@@ -277,11 +276,13 @@ export const githubLoginUser = code => dispatch => {
     .then(response => {
         if (response.success) {
             // If login was successful, set the token in local storage
-            localStorage.setItem('token', response.token);
-            // localStorage.setItem('creds', JSON.stringify(response.profile));
+            console.log(response.profile)
+            
             // Dispatch the success action
             // dispatch(fetchFavorites());
-            dispatch(receiveLogin(response));
+            dispatch(githubRecieveLogin(response.profile));
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('creds', response.profile);
         } else {
             const error = new Error('Error ' + response.status);
             error.response = response;
@@ -291,18 +292,21 @@ export const githubLoginUser = code => dispatch => {
     .catch(error => dispatch(loginError(error.message)))
 };
 
-// //handle login and authentication
-// export const githubRequestLogout = () => {
-//     return {
-//         type: actionTypes.LOGOUT_REQUEST
-//     }
-// }
+//handle login and authentication for github only because of their code-bearer-token strategy
+
+export const githubRequestLogin = code => {
+    return {
+        type: actionTypes.GITHUB_LOGIN_REQUEST,code
+    }
+}
   
-// export const githubReceiveLogout = () => {
-//     return {
-//         type: actionTypes.LOGOUT_SUCCESS
-//     }
-// }
+export const githubRecieveLogin = profile => {
+    return {
+        type: actionTypes.GITHUB_LOGIN_SUCCESS,
+        profile
+    }
+}
+
 
 // // Logs the user out
 // export const githubLogoutUser = () => dispatch => {

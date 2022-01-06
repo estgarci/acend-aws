@@ -110,10 +110,9 @@ exports.githubPassport = passport.use(
         {
             clientID: config.github.clientId,
             clientSecret: config.github.clientSecret,
-            
         },
         (accessToken, refreshToken, profile, next) => {
-            User.findOne({username: profile.username}, (err, user) => {
+            User.findOne({username: profile.id}, (err, user) => {
                 if (err) {
                     console.log('an error occured finding user')
                     return next(err, false);
@@ -124,10 +123,11 @@ exports.githubPassport = passport.use(
                     return next(null, user);
                 } else {
                     console.log("no error, creating new user")
-                    user = new User({githubId:  profile.id});
+                    console.log(profile.name)
+                    user = new User({username:  profile.id});
                     user.firstname = profile.name.givenName;
                     user.lastname = profile.name.familyName;
-                    user.name = profile.name
+                    user.name =  profile.name.givenName + ' ' + profile.name.familyName
                     user.githubId = profile.id;
                     user.save((err, user) => {
                         if (err) {

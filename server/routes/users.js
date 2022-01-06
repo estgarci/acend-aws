@@ -32,54 +32,6 @@ router.get('/facebook/token', cors.corsWithOptions, passport.authenticate('faceb
       res.json({success: true, token: token, status: 'You are successfully logged in!'});
   }
 });
-
-
-// router.post('/auth/github/', cors.corsWithOptions, async (req, res, next) => {
-
-//     const bearer_token = await superAgent
-//         .post('https://github.com/login/oauth/access_token')
-//         .send({
-//             client_id: config.github.clientId,
-//             client_secret: config.github.clientSecret,
-//             code: req.body.code
-//         })
-//         .set('Accept', 'application/json')
-//         .then(response => response.body.access_token)
-//         .catch(err => console.log(err))
-    
-//     const profile = await superAgent
-//                             .get('https://api.github.com/user')
-//                             .set('Authorization', `Bearer ${bearer_token}`)
-//                             .set('User-Agent', 'Acend' )
-//                             .then(result => result.body)
-//                             .catch(err => console.log(err))
-
-//     if ( profile.id){
-//         User.findOne({githubId:  profile.id}, (err, user) => {
-//             if (err) {
-//                 console.log(err)
-//             }
-//             if (!err && user) {
-//                 console.log('this user is already in database')
-//             } else {
-//                 console.log('new user, creating profile in database')
-//                 user = new User({ username:  profile.login });
-//                 user.githubId =  profile.id;
-//                 user.save((err, user) => {
-//                     if (err) {
-//                         console.log('error saving user')
-//                     } else {
-//                         console.log('success!')
-//                     }
-//                 });
-//             }
-//         });
-//     }
-
-//     // const token = authenticate.getToken({_id: req.user._id});
-//     res.setHeader('Content-Type', 'application/json');
-//     res.json({success: true, token: token, status: 'You are successfully logged in!'});
-// });
     
 
 router.get('/github/token', cors.corsWithOptions
@@ -105,12 +57,12 @@ router.get('/github/token', cors.corsWithOptions
 }
 , 
 passport.authenticate('github-token'),
-(req, res, next) => {
+(req, res) => {
     if (req.user) {
         const token = authenticate.getToken({_id: req.user._id});
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json({success: true, token: token, profile: req.user, status: 'You are successfully logged in!'});
+        res.json({profile: JSON.stringify(req.user), success: true, token: token, status: 'You are successfully logged in!'});
     }
 })
 
