@@ -82,8 +82,8 @@ app.use('/users', usersRouter);
 // }
 
 // app.use(auth);
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('C:/Users/01est/Documents/learning/mywork/acend-aws/client/build'));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+// app.use(express.static('C:/Users/01est/Documents/learning/mywork/acend-aws/client/build'));
 
 app.use('/api/airports', airportRouter);
 app.use('/api/countries', countryRouter);
