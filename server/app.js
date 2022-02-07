@@ -75,14 +75,14 @@ app.use('/users', usersRouter);
 //   if (!req.user) {
 //       const err = new Error('You are not authenticated!');                    
 //       err.status = 401;
-//       return next(err);
+//       return next(err);`````
 //   } else {
 //       return next();
 //   }
 // }
 
 // app.use(auth);
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('C:/Users/01est/Documents/learning/mywork/acend-aws/client/build'));
 
 app.use('/api/airports', airportRouter);
