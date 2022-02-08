@@ -1,4 +1,4 @@
-export const baseUrl = 'http://3.138.139.66:3443/';
+export const baseUrl = 'http://3.138.139.66/';
 export const facebookInfo = {
     "facebook_api_key"      :     "FB APP ID",
     "facebook_api_secret"   :     "FB API SECRET",
