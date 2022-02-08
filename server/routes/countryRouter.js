@@ -8,7 +8,7 @@ const authenticate = require('../authenticate');
 
 countryRouter.route('/')
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
-.get(cors.corsWithOptions, (req, res, next) => {
+.get(cors.cors, cors.corsWithOptions, (req, res, next) => {
     Country.find()
     .then(countries => {
         res.statusCode = 200;
