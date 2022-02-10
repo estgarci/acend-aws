@@ -1,16 +1,25 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
+}
+
+server {
+    listen 443 ssl;
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
-    server_name acendServer;
+
+    ssl_certificate /etc/nginx/ssl/acend-site.pem;
+    ssl_certificate_key /etc/nginx/ssl/acend-site.key;
+    ssl on;
+
+    server_name acend;
     location /api {
         proxy_pass https://localhost:3443;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;    
+        proxy_cache_bypass $http_upgrade;
     }
     location / {
         try_files $uri $uri/ =404;

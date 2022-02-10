@@ -7,8 +7,10 @@ const airportRouter = express.Router();
 const cors = require('./cors');
 
 airportRouter.route('/')
+// handle pre-flight request the client waits for server
+// defines what happens when an options header is sent in a request
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
-.get(cors.cors, cors.corsWithOptions, (req, res, next) => {
+.get(cors.cors, (req, res, next) => {
     Airport.find()
     .then(airports => {
         res.statusCode = 200;
@@ -17,15 +19,15 @@ airportRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.post(cors.corsWithOptions, authenticate.verifyAdmin, (req, res, next) => {
     res.statusCode = 403;
     res.end('POST operation not supported on /airports');
 })
-.put(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res) => {
+.put(cors.corsWithOptions, authenticate.verifyAdmin, (req, res) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /airports');
 })
-.delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.delete(cors.corsWithOptions, authenticate.verifyAdmin, (req, res, next) => {
     res.statusCode = 403;
     res.end('DELETE operation not supported on /airports');
 });
@@ -42,11 +44,11 @@ airportRouter.route('/:airportId')
     })
     .catch(err => next(err));
 })
-.post(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res) => {
+.post(cors.corsWithOptions, authenticate.verifyAdmin, (req, res) => {
     res.statusCode = 403;
     res.end(`POST operation not supported on /airports/${req.params.airportId}`);
 })
-.put(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.put(cors.corsWithOptions, authenticate.verifyAdmin, (req, res, next) => {
     Airport.findByIdAndUpdate(req.params.airportId, {
         $set: req.body
     }, { new: true })
@@ -57,7 +59,7 @@ airportRouter.route('/:airportId')
     })
     .catch(err => next(err));
 })
-.delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.delete(cors.corsWithOptions, authenticate.verifyAdmin, (req, res, next) => {
     Airport.findByIdAndDelete(req.params.airportId)
     .then(response => {
         res.statusCode = 200;

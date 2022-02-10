@@ -6,7 +6,7 @@ const authenticate = require('../authenticate');
 
 flightsRouter.route('/')
 .options(cors.corsWithOptions,  (req, res) => res.sendStatus(200))
-.get(cors.cors, cors.corsWithOptions, async (req, res, next) => {
+.get(cors.cors, async (req, res, next) => {
     const origin = req.query.origin
     const destination = req.query.destination
     // const departure = req.params.departure
