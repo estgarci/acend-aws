@@ -1,6 +1,7 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
+    server_name acend.site www.acend.site;
 }
 
 server {
@@ -12,13 +13,14 @@ server {
     ssl_certificate_key /etc/nginx/ssl/acend-site.key;
     ssl on;
 
-    server_name acend;
+    server_name acend.site www.acend.site;
     location /api {
         proxy_pass https://localhost:3443;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
         proxy_cache_bypass $http_upgrade;
     }
     location / {
