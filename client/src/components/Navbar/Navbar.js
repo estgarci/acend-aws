@@ -33,7 +33,7 @@ export function ContWithFacebook(props) {
 
   return (
     <FacebookLogin
-                  appId="353877233072604"
+                  appId="1369933030105210"
                   size='medium'
                   fields="name"
                   scope="public_profile"
