@@ -135,7 +135,7 @@ export const loginUser = creds => dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch(baseUrl + 'users/login', {
+    return fetch(baseUrl + 'api/users/login', {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json'
@@ -193,19 +193,18 @@ export const logoutUser = () => dispatch => {
     dispatch(receiveLogout())
 }
 
-
 // FACEBOOK AUTH
 export const facebookLoginUser = creds => dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
-    return fetch( baseUrl + 'users/facebook/token', {
+    return fetch( baseUrl + 'api/users/facebook/token', {
         headers : { 
             'Authorization' :  'Bearer ' + creds.accessToken
         }
     })
     .then(response => {
             if (response.ok) {
-
+                console.log('response from users/facebook/toke was okay this is the RESPONSE:', response)
                 return response;
             } else {
                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
@@ -260,7 +259,7 @@ export const githubLoginUser = code => dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     
     dispatch(githubRequestLogin(code))
-    return fetch( baseUrl + `users/github/token?code=${code}`)
+    return fetch( baseUrl + `api/users/github/token?code=${code}`)
     .then(response => {
             if (response.ok) {
                 return response;

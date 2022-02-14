@@ -67,7 +67,7 @@ app.use(passport.initialize());
 // app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 
 // function auth(req, res, next) {
 //   console.log(req.user);
@@ -84,7 +84,7 @@ app.use('/users', usersRouter);
 // app.use(auth);
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('C:/Users/01est/Documents/learning/mywork/acend-aws/client/build'));
-
+app.use('/api/users', usersRouter);
 app.use('/api/airports', airportRouter);
 app.use('/api/countries', countryRouter);
 app.use('/api/flights', flightsRouter);

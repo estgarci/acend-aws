@@ -24,8 +24,8 @@ export function ContWithFacebook(props) {
 
 
   const responseFacebook = (response) => {
+  console.log(response)
     if(response){
-      console.log(response);
       props.facebookLoginUser(response)
       props.toggleModal()
     }
@@ -49,7 +49,6 @@ export function ContWithGithub(props) {
   const responseGit = async(response) => {
     if(response){
       props.githubLoginUser(response.code)
-      console.log(response)
       props.toggleModal()
     }
   }
