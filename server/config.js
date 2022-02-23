@@ -3,7 +3,7 @@ module.exports = {
     'mongoUrl': 'mongodb://localhost:27017/acend',
     'facebook': {
         clientId: '1369933030105210',
-        clientSecret: 'c0624a4c2c7e9b910cbcf8de79231a6b'
+        clientSecret: 'ada1dec1a5e6dc772e68d2d558f9e889'
     },
     'github': {
         clientId: '2311bf273d646f269010',

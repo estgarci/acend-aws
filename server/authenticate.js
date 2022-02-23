@@ -77,8 +77,8 @@ exports.verifyUser = passport.authenticate('jwt', {session: false});
 exports.facebookPassport = passport.use(
     new FacebookTokenStrategy(
         {
-            clientID: config.facebook.clientId,
-            clientSecret: config.facebook.clientSecret
+            clientID: process.env.REACT_APP_FACEBOOK_CLIENT_ID,
+            clientSecret: process.env.REACT_APP_FACEBOOK_SECRET_KEY
         }, 
         (accessToken, refreshToken, profile, done) => {
             User.findOne({facebookId: profile.id}, (err, user) => {

@@ -28,7 +28,6 @@ usersRouter.route('/facebook/token')
 // this get request returns a jwt session token
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
 .get(cors.cors, passport.authenticate('facebook-token'), (req, res) => {
-  
   if (req.user) {
       const token = authenticate.getToken({_id: req.user._id});
       res.statusCode = 200;
@@ -69,6 +68,7 @@ passport.authenticate('github-token'),
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json({profile: JSON.stringify(req.user), success: true, token: token, status: 'You are successfully logged in!'});
+        //redirect?
     }
 })
 

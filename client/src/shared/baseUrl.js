@@ -1,1 +1,1 @@
-export const baseUrl = 'https://acend.site/';
+export const baseUrl = 'https://www.acend.site/';
