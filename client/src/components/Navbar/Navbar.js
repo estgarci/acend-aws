@@ -60,7 +60,6 @@ export function ContWithGithub(props) {
         size='medium'
         onSuccess={responseGit}
         className='github-login'
-        redirectUri='https://www.acend.site/api/users/github/token'
   />
   </>
   )
