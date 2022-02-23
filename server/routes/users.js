@@ -12,7 +12,6 @@ const superAgent = require('superagent')
 const usersRouter = express.Router();
 
 /* GET users listing. */
-
 usersRouter.route('/')
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
 .get(cors.cors, (req, res, next) => {
@@ -29,7 +28,7 @@ usersRouter.route('/facebook/token')
 // this get request returns a jwt session token
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
 .get(cors.cors, passport.authenticate('facebook-token'), (req, res) => {
-
+  
   if (req.user) {
       const token = authenticate.getToken({_id: req.user._id});
       res.statusCode = 200;
@@ -47,7 +46,7 @@ usersRouter.route('/github/token')
         .post('https://github.com/login/oauth/access_token')
         .send({
             client_id: process.env.REACT_APP_GITHUB_CLIENT_ID,
-            client_secret: process.env.REACT_APP_GITHUB_CLIENT_SECRET,
+            client_secret: process.env.REACT_APP_GITHUB_SECRET_KEY,
             code: req.query.code
         })
         .set('Accept', 'application/json')
@@ -72,7 +71,6 @@ passport.authenticate('github-token'),
         res.json({profile: JSON.stringify(req.user), success: true, token: token, status: 'You are successfully logged in!'});
     }
 })
-
 
 usersRouter.post('/signup', cors.cors, (req, res) => {
   User.register(
