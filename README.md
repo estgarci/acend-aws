@@ -1,7 +1,5 @@
 # [Acend](https://www.acend.site)
-
-## Description
-Acend is a full-stack (MERN) airline website that communicates with a proprietary API and displays the real-time list of flights of a selected airport.
+An Airline website that communicates with a proprietary API and displays the real-time list of flights of a selected airport.
 
 The purpose of this project was to build a website that would showcase my abilities as a full-stack software engineer. The goal was to create a production-ready application and focus on the [search-flights-widget](www.expedia.com) 
 
