@@ -3,7 +3,7 @@
 ## Description
 Acend is a full-stack (MERN) airline website that communicates with a proprietary API and displays the real-time list of flights that leave a selected airport.
 
-The purpose of this project was to build a website that would showcase my abilities as a software developer. The goal was to create a production-ready application, mainly focusing on the search-flights-widget found in many travel websites. 
+The purpose of this project was to build a website that would showcase my abilities as a software developer. The goal was to create a production-ready application and focus on the search-flights-widget. 
 
 ## Features:
 
