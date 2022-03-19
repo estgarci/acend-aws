@@ -1,7 +1,7 @@
 # [Acend](https://www.acend.site)
 An airline website that communicates with a proprietary API and displays the real-time list of flights scheduled at a selected airport.
 
-The purpose of this project was to build a website that would showcase my abilities as a full-stack software engineer. The goal was to create a production-ready application and focus on the [search-flights widget](https://www.expedia.com/) 
+The purpose of this project was to build a website that would showcase my abilities as a full-stack software engineer. The goal was to create a production-ready, mobile friendly application and focus on the [search-flights widget](https://www.expedia.com/) 
 
 ## My Actions:
 
@@ -11,6 +11,7 @@ The purpose of this project was to build a website that would showcase my abilit
 * Managed state with Redux.js
 * Handled CSS using SCSS and Styled-Components
 * Implemented AirBnB's [react-dates.js](https://github.com/react-dates/react-dates)
+* Ensured compatability with mobile devices
 
 ### The Middle
 * Deployed using an AWS EC2 instance that spins a linux server
