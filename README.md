@@ -24,12 +24,6 @@ The purpose of this project was to build a website that would showcase my abilit
 * Handled user sessions with JWT tokens
 * Configured backend server to allow cross-origin requests
 
-
 ### CI/CD
 * Utilised the SCRUM methodology
 * Implemented automated testing
-* 
-
-
-
-
