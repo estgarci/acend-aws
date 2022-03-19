@@ -13,7 +13,7 @@ The purpose of this project was to build a website that would showcase my abilit
 * Implemented AirBnB's [react-dates.js](https://github.com/react-dates/react-dates)
 
 ### The Middle
-* Deployed using an AWS EC2 instance that runs a linux server with ubuntu20.4
+* Deployed using an AWS EC2 instance that spins a linux server
 * Configured a Nginx reverse proxy server
 * Configured a secured communication using SSL
 
