@@ -1,6 +1,6 @@
 # [Acend](https://www.acend.site)
 
-![Screenshot](acend-website.png)
+(acend-website.png)
 
 An airline website that communicates with a proprietary API and displays the real-time list of flights scheduled at a selected airport.
 
