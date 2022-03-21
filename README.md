@@ -4,7 +4,7 @@
 
 An airline website that communicates with a proprietary API and displays the real-time list of flights scheduled at a selected airport. https://acend.site
 
-The purpose of this project was to build a website that would showcase my abilities using the MERN stack (MongoDB, Express, React, Node). The goal was to create a production-ready, mobile friendly application and focus on the [search-flights widget]. The widget can be found in many travel websites such as [Expedia](https://www.expedia.com/).
+The purpose of this project was to build a website that would showcase my abilities using the MERN stack (MongoDB, Express, React, Node). The goal was to create a production-ready, mobile friendly application and focus on the search-flights widget. The widget can be found in many travel websites such as [Expedia](https://www.expedia.com/).
 
 ## Technologies used and built:
 
