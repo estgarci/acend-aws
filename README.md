@@ -10,15 +10,16 @@ The purpose of this project was to build a website that would showcase my abilit
 
 ### The Front
 * Designed using AdobeXD
-* Built with React & Bootstrap.js
-* Managed state with Redux.js
+* Built w/ React & Bootstrap.js
+* Managed state w/ Redux.js
+* Managed animations w/ Popper.js and Framer Motion
 * Handled CSS using SCSS and Styled-Components
 * Implemented AirBnB's react-dates.js, a date picker library
 * Built a recomendation search-bar
-* Ensured compatability with mobile devices
+* Ensured compatability w/ mobile devices
 
 ### The Middle
-* Deployed using an AWS EC2 instance
+* Deployed application using an AWS EC2 instance
 * Configured server using Nginx
 * Configured DNS and SSL/TLS with CloudFlare
 
