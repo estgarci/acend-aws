@@ -3,27 +3,27 @@ An airline website that communicates with a proprietary API and displays the rea
 
 The purpose of this project was to build a website that would showcase my abilities as a full-stack software engineer. The goal was to create a production-ready, mobile friendly application and focus on the [search-flights widget]. The widget can be found in many Travel websites such as [Expedia](https://www.expedia.com/). 
 
-## Technologies
+## Technologies Used and Built
 
 ### The Front
 * Designed using AdobeXD
-* Built with React & Bootstrap.js, [ReactSTrap](https://reactstrap.github.io/?path=/story/home-installation--page)
-* Managed state with [Redux.js](https://redux.js.org/)
+* Built with React & Bootstrap.js
+* Managed state with Redux.js
 * Handled CSS using SCSS and Styled-Components
-* Implemented AirBnB's [react-dates.js](https://github.com/react-dates/react-dates), a date picker library
+* Implemented AirBnB's react-dates.js, a date picker library
 * Built a recomendation search-bar
 * Ensured compatability with mobile devices
 
 ### The Middle
-* Deployed using an [AWS](https://aws.amazon.com/) EC2 instance
-* Configured server using [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/)
-* Configured DNS and SSL/TLS with [CloudFlare](https://www.cloudflare.com/)
+* Deployed using an AWS EC2 instance
+* Configured server using Nginx
+* Configured DNS and SSL/TLS with CloudFlare
 
 ### The Back
 * Used Node.js 
-* Used [MongoDB](https://www.mongodb.com/) w/ [Mongoose](https://mongoosejs.com/) as a database
-* Configured a communication with FlightAware, a proprietary API
-* Implemented user authentication through Github and Facebook using [Passport.js](https://www.passportjs.org/) to handle OAuth2.0
+* Used Mongodb w/ mongoose as a database
+* Configured a communication with FlightAware, a proprietary API that provides real-time flight tracking data
+* Implemented user authentication through Github and Facebook using Passport.js to handle OAuth2.0
 * Handled user sessions with JWT tokens
 * Configured backend server to allow cross-origin requests
 
