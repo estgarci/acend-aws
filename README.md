@@ -24,6 +24,7 @@ The purpose of this project was to build a website that would showcase my abilit
 * Configured DNS and SSL/TLS with CloudFlare
 
 ### The Back
+* Customized server endpoints using Node
 * Used Mongodb w/ mongoose as a database
 * Configured a communication with FlightAware, a proprietary API that provides real-time flight tracking data
 * Implemented user authentication through Github and Facebook using Passport.js to handle OAuth2.0
