@@ -6,7 +6,7 @@ An airline website that communicates with a proprietary API and displays the rea
 
 This project was built using the MERN stack (MongoDB, Express, React, Node). The goal was to create a mobile friendly application and focus on the search-flights widget.
 
-I was inspired by many travel websites, one of my favorites is [Expedia's](https://www.expedia.com/). The U.I has a minimalistic and user friendly design.
+I was inspired by [Expedia](https://www.expedia.com/) and [Volaris](https://www.volaris.com/). They have a U.I that is minimalistic and user friendly 
 
 ## Technologies used and built:
 
