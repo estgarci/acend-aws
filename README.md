@@ -9,7 +9,7 @@ This project was built using the MERN stack (MongoDB, Express, React, Node). The
 I was inspired by [Expedia](https://www.expedia.com/) and [Volaris](https://www.volaris.com/). They have a U.I that is minimalistic and user friendly.
 The purpose of the project was to deploy a live webiste and use it as a vehicle for learning different technologies. Some of the design choices were predicated soley on their learning potential. I wanted to strengthen my knowledge with the technologies I learned at [Nucamp](https://https://www.nucamp.co/) . 
 
-## Technologies used and built:
+## Tech
 
 ### The Front
 * Designed using Adobe XD
