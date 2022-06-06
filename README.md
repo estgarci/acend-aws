@@ -2,7 +2,7 @@
 
 ![Screenshot](acend-website.png)
 
-A mock airline website that communicates with a proprietary API and displays the real-time list of flights scheduled at a selected airport. https://acend.site
+A mock airline website that consumes a proprietary API and displays the real-time list of flights scheduled at a selected airport. https://acend.site
 
 This project was built using the MERN stack (MongoDB, Express, React, Node). The goal was to create a mobile friendly application and focus on the search-flights widget.
 
