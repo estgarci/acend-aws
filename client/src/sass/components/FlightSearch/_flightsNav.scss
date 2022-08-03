@@ -2,6 +2,7 @@
 
 #flights-nav {
   font-size: 1rem;
+
   #arrow,
   #arrow::before {
     position: absolute;
@@ -37,7 +38,7 @@
 
   input:focus {
     outline: 0;
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid rgb(20, 103, 20);
   }
   input {
     text-align: center;
@@ -46,7 +47,7 @@
     color: $gray-700;
     border: 0;
     text-align: center;
-    padding: 11px 11px 9px;
+    padding: 11px 0px 9px;
   }
 
   button.btn-sm {

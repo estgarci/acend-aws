@@ -1,27 +1,24 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-// var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const session = require('express-session');
-// const FileStore = require('session-file-store')(session);
 const passport = require('passport');
-// const authenticate = require('./authenticate');
+const cookieParser = require('cookie-parser');
 const dotenv = require("dotenv")
 dotenv.config()
 const config = require('./config');
-
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const airportRouter = require('./routes/airportRouter');
 const countryRouter = require('./routes/countryRouter');
 const flightsRouter = require('./routes/flightsRouter');
+const favoritesRouter = require('./routes/favoriteRouter');
+const authRouter = require('./routes/auth');
 
 const mongoose = require('mongoose');
-
 const url = config.mongoUrl
+
 const connect = mongoose.connect(url, {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -49,45 +46,26 @@ app.all('*', (req, res, next) => {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cookieParser('secret'));
+// allows POSTing nested objects
 app.use(express.urlencoded({ extended: false }));
 
-
-// app.use(session({
-//   name: 'session-id',
-//   secret: '12345-67890-09876-54321',
-//   saveUninitialized: false, //when no updates are made, at the end of the request it wont be saved and no cookies will be sent to the client
-//   resave: false, // session doesnt get deleted 
-//   store: new FileStore() //creates a new file store to store in the server's hard disk instead of application memory 
-// }));
-
+//initialize and session are required whenever you use express sessions, two middlewares to check incomming requests
 app.use(passport.initialize());
-// app.use(passport.session());
 
 app.use('/', indexRouter);
-
-
-// function auth(req, res, next) {
-//   console.log(req.user);
-
-//   if (!req.user) {
-//       const err = new Error('You are not authenticated!');                    
-//       err.status = 401;
-//       return next(err);`````
-//   } else {
-//       return next();
-//   }
-// }
-
+app.use('/api/users', usersRouter);
 // app.use(auth);
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('C:/Users/01est/Documents/learning/mywork/acend-aws/client/build'));
-app.use('/api/users', usersRouter);
+
+app.use('/api/auth', authRouter);
 app.use('/api/airports', airportRouter);
 app.use('/api/countries', countryRouter);
 app.use('/api/flights', flightsRouter);
+app.use('/api/favorites', favoritesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

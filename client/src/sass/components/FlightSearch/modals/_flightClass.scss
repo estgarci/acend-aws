@@ -7,27 +7,10 @@
   position: relative;
   top: 4px;
   border-radius: 1%;
-
-  #arrow,
-  #arrow::before {
-    right: 39%;
-    width: 25px;
-    height: 25px;
-    top: -2px;
-    background: inherit;
-  }
-
-  #arrow {
-    visibility: hidden;
-  }
-
-  #arrow::before {
-    visibility: visible;
-    content: "";
-    transform: rotate(45deg);
-  }
+  padding:1rem;
 
   Button {
+    text-align: center;
     &.type-button {
       color: $gray-700;
       border-radius: 1%;
@@ -39,7 +22,7 @@
       }
     }
     &.selected {
-      background-color: $light-blue;
+      background-color: $secondary;
       color: white;
       &:focus {
         background-color: $light-blue;

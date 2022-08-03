@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Tippy from '@tippyjs/react/headless';
-import { Col, Row, Button} from 'reactstrap';
+import { Col, Row, Button, Input} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, motion } from "framer-motion";
 
@@ -24,37 +24,42 @@ function TravelersChild(props) {
         }
     }
      
-    return(<div id="travelers-modal" className="pb-3 pt-3 text-center">
-                <div id="arrow" data-popper-arrow></div>
-                <h5>Travelers</h5>
+    return(<div id="travelers-modal" className="text-center">
+                <h5 className="">Travelers</h5>
                 <hr style={{width: 90+'%'}}/>
-                <div className="pb-1 pr-3 pl-3 text-left">
-                    <Row className="pb-2 text-right align-text-bottom">
+                <div className="text-left">
+                    <Row className="text-right align-text-bottom">
                         <Col xs={4} className="text-left my-auto pr-0 align-text-bottom pr-4">Adults</Col>
                         
-                        <Col xs={8} className="text-right pl-0">
-                            <button className="select-button" onClick={() => {decrement(adultNum, setAdultNum, 1);}}><FontAwesomeIcon icon="minus" /></button>
-                            <input type="submit" className="align-text-bottom" value={adultNum}/>
-                            <button className="select-button" onClick={() => increment(adultNum, setAdultNum, 6)}><FontAwesomeIcon icon="plus" /></button>
+                        <Col xs={8} className="d-flex justify-content-end pl-0">
+                            <Button className="select-button" onClick={() => {decrement(adultNum, setAdultNum, 1);}}><FontAwesomeIcon icon="minus" /></Button>
+                            <div className='btn btn-sm'>{adultNum}</div>
+                            <Button className="select-button" onClick={() => increment(adultNum, setAdultNum, 6)}><FontAwesomeIcon icon="plus" /></Button>
                         </Col>
                     </Row>
-                    <Row className="pb-2 pt-2 text-right">
-                        <Col xs={4} className="text-left pr-4 my-auto">Children</Col>
-                        <Col xs={8} className="text-right pl-0">
-                            <button className="select-button " onClick={() => decrement(childNum, setChildNum, 0)}><FontAwesomeIcon icon="minus" /></button>
-                            <input type="submit" className="align-text-bottom" value={childNum} placeholder="0"/>
-                            <button className="select-button" onClick={() => increment(childNum, setChildNum, 6)}><FontAwesomeIcon icon="plus"/></button>
+                    <Row className="text-right">
+                        <Col xs={4} className="text-left my-auto">Children</Col>
+                        <Col xs={8} className="d-flex justify-content-end">
+                            <Button className="select-button" onClick={() => decrement(childNum, setChildNum, 0)}><FontAwesomeIcon icon="minus" /></Button>
+                            <div className='btn btn-sm'>{childNum}</div>
+                            <Button className="select-button" onClick={() => increment(childNum, setChildNum, 6)}><FontAwesomeIcon icon="plus"/></Button>
+                         
                         </Col>
                     </Row>
-                    <Row className="pb-3 pt-2 text-right">
-                        <Col xs={4} className="text-left pr-0 my-auto">Infants</Col>
-                        <Col xs={8} className="text-right pl-0">
-                            <button className="select-button" onClick={() => decrement(infanNum, setInfanNum, 0)}><FontAwesomeIcon icon="minus" /></button>
-                            <input type="submit" className="align-text-bottom" value={infanNum} placeholder="0"/>
-                            <button className="select-button" onClick={() => increment(infanNum, setInfanNum, 6)}><FontAwesomeIcon icon="plus" /></button>
+                    <Row className="text-right">
+                        <Col xs={4} className="text-left my-auto">Infants</Col>
+                        <Col xs={8} className="d-flex justify-content-end pl-0">
+                            <Button className="select-button" onClick={() => decrement(infanNum, setInfanNum, 0)}><FontAwesomeIcon icon="minus" /></Button>
+                            <div className='btn btn-sm'>{infanNum}</div>
+                            <Button className="select-button" onClick={() => increment(infanNum, setInfanNum, 6)}><FontAwesomeIcon icon="plus" /></Button>
                         </Col>
                     </Row>
-                    <Button size="small" color="primary" className="w-100" onClick={props.handleClick}>Done</Button>
+                    <Row className='text-center pb-0'>
+                        <Col>
+                            <Button size="small" color="primary" className="w-100" onClick={props.handleClick}>Done</Button>
+                        </Col>
+                    </Row>
+                    
                 </div>
                 
             </div> )

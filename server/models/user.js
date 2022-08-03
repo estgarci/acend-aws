@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true
-    },
     firstname: {
         type: String,
         default: ''
@@ -15,18 +11,25 @@ const userSchema = new Schema({
         type: String,
         default: ''
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        default: ''
+    },
     name: {
         type: String,
         default: ''
     },
-    facebookId: String,
-    githubId: String, 
+    accessToken: String,
+    refreshToken: String,
     admin: {
         type: Boolean,
         default: false
     }
 });
 
+//helps with additional authentication-related methods
 userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Tippy from '@tippyjs/react/headless';
-import {Button} from 'reactstrap';
+import {Button, Row, Col} from 'reactstrap';
 import { useSpring, motion } from "framer-motion";
 
 function FlightTypeChild(props) {
@@ -10,16 +10,23 @@ function FlightTypeChild(props) {
         setSelected(fightClass);
         props.setFlightClass(fightClass);
     }
-    const selectButtonStyle = "type-button flightType-input pb-2 pt-2 mb-1 text-left focused d-flex w-100 "
+    const selectButtonStyle = "type-button flightType-input pb-2 pt-2 mb-1 focused d-flex w-100 "
     
-    return(<div id="flightClassModal" className="pb-3 pt-3 text-center">
-                <div id="arrow" data-popper-arrow=""></div>
-                <h5>Flight Class</h5>
-                <hr style={{width: 90+'%'}}/>
-                
-                <Button active color="white" className={(selected === "Economy") ? selectButtonStyle + "selected": selectButtonStyle} onClick={()=>toggleSelection("Economy")}>Economy</Button>
+    return(<div id="flightClassModal" className="text-center">
+              <Row>
+                  <Col>
+                    <h5>Flight Class</h5>
+                    <hr style={{width: 90+'%'}}/>
+                    <Button active color="white" className={(selected === "Economy") ? selectButtonStyle + "selected": selectButtonStyle} onClick={()=>toggleSelection("Economy")}>Economy</Button>
                 <Button color="white" className={(selected === "Business") ? selectButtonStyle + "selected": selectButtonStyle} onClick={()=>toggleSelection("Business")}>Business</Button>
                 <Button active={true} color="white" className={(selected === "Premium") ? selectButtonStyle + "selected-premium": selectButtonStyle} onClick={()=>toggleSelection("Premium")}>Premium</Button>
+                  </Col>
+              </Row>
+              <Row className='mt-2'>
+                  <Col>
+                    <Button size="small" color="primary" className="w-100" onClick={props.handleClick}>Done</Button>
+                  </Col>
+              </Row>
             </div> )
 }
 
@@ -58,11 +65,14 @@ function FlightClass(props) {
     return ( 
             <Tippy
                 interactive={true}
-                visible={props.visibleModal === "flightClass"}
+                visible={props.visibleModal === "flightClass" && 1==1}
                 animation={true}
                 onMount={onMount}
                 onHide={onHide}
-                // onTrigger={onTrigger}
+                arrow={true}
+                hideOnClick={true}
+                trigger='click'
+                
                 render={attrs => <motion.div  style={{ scale, opacity }} {...attrs} >
                                     <div id="arrow" data-popper-arrow></div>
                                     <FlightTypeChild handleClick={toggleButton} setFlightClass={setFlightClass}/>

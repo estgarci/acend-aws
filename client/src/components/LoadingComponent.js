@@ -2,9 +2,8 @@ import React from 'react';
 
 export const Loading = () => {
     return (
-        <div className="text-center">
+        <div className="m-0 text-center h3">
             <i className="fa fa-spinner fa-pulse fa text-primary" />
-            <div>loading</div>
         </div>
     );
 };

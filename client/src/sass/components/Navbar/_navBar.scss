@@ -1,18 +1,145 @@
 @use "../../custom_BS" as *;
 
-.main-nav {
-  letter-spacing: 0.33rem;
+.logo{
   font-family: bc-alphapipe;
+  text-decoration:none;
+  color:$primary;
+  &:hover{
+    text-decoration:none;
+  }
+}
+
+
+
+.main-nav {
+
+  #main-logo{
+    font-size: 2rem;
+  }
+
+  letter-spacing: 0.33rem;
   background-color: $background-transparent;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
   font-size: 1rem;
 
-  .navbar-brand {
+  .navbar-light  .navbar-light {
     color: $primary;
     font-size: 2.4rem;
-    padding: 0px;
+    padding: 0px;  
   }
+
+  .navbar-brand:hover, .navbar-brand:focus{
+    color:$primary;
+  }
+
+  .navbar-brand{
+    &:focus{
+      color:$primary;
+    }
+    &:active{
+      color:$primary ;
+    }
+  }
+
+  .dropdown-menu-right{
+    right: 0;
+    left: 0;
+    
+  }
+
+  .dropdown-menu {
+    padding: 0;
+    background-color: rgba(226, 226, 248, 0.822);
+    text-align: center;
+    border:0px;
+    box-shadow:none;
+    border-radius: 1px;
+    margin-top: .5rem;
+  }
+
+  .dropdown-item{
+    color:$primary;
+  }
+
+  #singout-button{
+    color:rgba(243, 75, 14, 0.805);
+  }
+
+  .btn-outline-dark:focus, .btn-outline-dark.focus{
+    box-shadow: none;
+  }
+
+
+
 }
+
+.main-nav-modal{
+
+  form{
+    width:100%
+  }
+
+  .text-forgot{
+  
+    text-align:left;
+  }
+
+  h1 {
+    overflow: hidden;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0rem 1rem 1rem 1rem;
+    margin: 0rem;
+  }
+  
+  h1:before,
+  h1:after {
+    background-color: $primary;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+  
+  h1:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+  
+  h1:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+
+}
+
+
+
+
+
+.divider {
+
+  div{
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin: 1rem 0px 1rem; 
+    font-size: 1.1rem;
+  }
+
+  span {
+    background:#fff; 
+    padding: .5rem; 
+  }
+
+}
+
+
+
 
 .github-login {
   color: white;
@@ -20,11 +147,26 @@
   background-color: rgb(21, 21, 21);
   border-radius: inherit;
   font-size: 1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  padding: 1rem;
+
   border: 0;
   left: 0;
   top: 0;
+  width:266px;
+  height: 40px;
+}
+
+
+.facebook-login {
+  background-color: rgb(24, 119, 242) ;
+  border-radius: inherit;
+  font-size: 1rem;
+  border: 0;
+  left: 0;
+  width:100px;
+  position: relative ;
+  top: 0;
   width: 100%;
 }
+
+
+

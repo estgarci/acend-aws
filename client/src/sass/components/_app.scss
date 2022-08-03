@@ -1,11 +1,72 @@
 @use "../custom_BS" as *;
 
+
+
 body {
   padding: 0;
   margin: 0;
+  
 }
 
-.App-header {
+.form-control:focus {
+  outline: 0;
+  border-bottom: 2px solid green;
+  box-shadow : none;
+}
+
+.form-control {
+  text-align: center;
+  width: 100%;
+  font-size: 1rem;
+
+  border: 0;
+  text-align: center;
+
+  border-radius: 1%;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+}
+
+button:active {
+  outline: none;
+}
+
+button:hover {
+  outline: none;
+}
+
+.btn {
+  border-radius: 1%;
+  border: none;
+}
+
+.input {
+  border-radius: 1%;
+}
+
+.modal-body{
+  padding: 0;
+  border-radius: 1%;
+ 
+}
+
+.modal-content{
+  padding: 1rem;
+  border-radius: 1%;
+  background-color: $background-transparent;
+}
+
+
+
+.content-background {
   background-color: #ffffff5d;
   display: flex;
   flex-direction: column;
@@ -17,8 +78,6 @@ body {
   height: 95vh;
   background-image: url(../img/cinquel2.png);
 
-  // filter: blur(8px);
-  // -webkit-filter: blur(8px);
   backdrop-filter: blur(20px);
   background-size: cover;
   background-position: bottom;
@@ -28,3 +87,17 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.main-box {
+  margin-top: 4.5rem;
+  background-color: $background-transparent;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  padding: 1rem;
+
+  @media only screen and (min-width: 990px){
+    width: 1020px;
+  }
+
+}
+

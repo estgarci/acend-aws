@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 import { Airports } from './airports';
 import { Countries } from './countries';
 import { Flights } from './flights';
-import { SearchFlights } from './forms';
+import { Favorites } from './favorites';
 import { Auth } from './auth';
 
 //create store function from redux, and pass it the initial function, then return the store
@@ -18,7 +18,8 @@ export const ConfigureStore = () => {
             auth: Auth,
             countries: Countries,
             airports: Airports,
-            flights: Flights
+            flights: Flights,
+            favorites: Favorites
         }),  
         applyMiddleware(thunk, logger)
     );

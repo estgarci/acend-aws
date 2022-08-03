@@ -5,6 +5,7 @@ import { Loading } from '../../LoadingComponent';
 
 function Suggestions({airports, onSuggestHandler, suggestions}) {
   const digitsRegex = new RegExp('d', "gi")
+
   if(suggestions.length){
     return(<div id="flightSuggestionModal" className="mr-1 ml-1 bg-white text-center">
             {suggestions.map((suggestion, i) => {
@@ -23,8 +24,9 @@ function Suggestions({airports, onSuggestHandler, suggestions}) {
             })}
           </div> )
   }
-
-  if(airports.isLoading){
+  var airportEl = document.getElementById('airport')
+  var isFocused = (document.activeElement === airportEl)
+  if(airports.isLoading &&  isFocused ){
     return (<div id="flightSuggestionModal" className="bg-white"><Loading/></div>);
   }
 
@@ -35,11 +37,9 @@ function Suggestions({airports, onSuggestHandler, suggestions}) {
 }
 
 function AirportInput(props) {
-
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState('');
   const [visible, setVisible] = useState(false);
-
   const onSuggestHandler = (text, selectedAirport) => {
     setText(text);
     props.setFlightSearchInfo((prevState) => ({...prevState, [props.direction]: selectedAirport}))
@@ -112,6 +112,7 @@ function AirportInput(props) {
 
   }
 
+
   useEffect(()=>{onChangeHandler(text)}, [props.airports.airports])
   return ( 
           <Tippy
@@ -123,7 +124,7 @@ function AirportInput(props) {
               role="tooltip"
               onHide={onHide}
               render={attrs => <motion.div style={{ scale, opacity }} {...attrs} >
-                                  {<Suggestions airports={props.airports} suggestions={suggestions} onSuggestHandler={onSuggestHandler}/>}
+                                  {<Suggestions  airports={props.airports} suggestions={suggestions} onSuggestHandler={onSuggestHandler}/>}
                                </motion.div>}
               >
               <input type="text"

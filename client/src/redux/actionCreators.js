@@ -38,6 +38,7 @@ export const addCountries = countries => ({
     type: actionTypes.ADD_COUNTRIES,
     payload: countries
 });
+
 // airports //
 export const fetchAirports  = () => dispatch => {
     dispatch(airportsLoading());
@@ -117,13 +118,17 @@ export const requestLogin = creds => {
     }
 }
   
-export const receiveLogin = response => {
+export const receiveLogin = (user) => {
     return {
         type: actionTypes.LOGIN_SUCCESS,
-        token: response.token
+        user
     }
 }
-  
+export const requestOauthLogin = () => {
+    return {
+        type: actionTypes.OAUTH_LOGIN_SUCCESS
+    }
+}
 export const loginError = message => {
     return {
         type: actionTypes.LOGIN_FAILURE,
@@ -133,14 +138,14 @@ export const loginError = message => {
 
 export const loginUser = creds => dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
-
+    dispatch(requestLogin())
     return fetch(baseUrl + 'api/users/login', {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(creds)
+        body: JSON.stringify(creds),
+        credentials: 'include'
     })
     .then(response => {
             if (response.ok) {
@@ -155,13 +160,11 @@ export const loginUser = creds => dispatch => {
     )
     .then(response => response.json())
     .then(response => {
+        console.log('response')
         if (response.success) {
-            // If login was successful, set the token in local storage
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('creds', JSON.stringify(creds));
-            // Dispatch the success action
-            // dispatch(fetchFavorites());
-            dispatch(receiveLogin(response));
+            localStorage.setItem('user', JSON.stringify(response.user));
+            dispatch(fetchFavorites())
+            dispatch(receiveLogin(response.user));
         } else {
             const error = new Error('Error ' + response.status);
             error.response = response;
@@ -176,35 +179,46 @@ export const requestLogout = () => {
     return {
         type: actionTypes.LOGOUT_REQUEST
     }
-}
-  
+}  
 export const receiveLogout = () => {
     return {
         type: actionTypes.LOGOUT_SUCCESS
     }
 }
-
-// Logs the user out
 export const logoutUser = () => dispatch => {
     dispatch(requestLogout())
-    localStorage.removeItem('token');
-    localStorage.removeItem('creds');
-    // dispatch(favoritesFailed('Error 401: Unauthorized'));
-    dispatch(receiveLogout())
+    return fetch(baseUrl + 'api/users/logout', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(response => {
+                if (response){
+                    localStorage.clear();
+                    dispatch(receiveLogout())
+                }
+                else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+        },
+        error => { throw error; })
 }
 
-// FACEBOOK AUTH
-export const facebookLoginUser = creds => dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
-    return fetch( baseUrl + 'api/users/facebook/token', {
-        headers : { 
-            'Authorization' :  'Bearer ' + creds.accessToken
-        }
+export const fetchUser = () => dispatch => {
+    // only fetch user if not authorized
+    return fetch(baseUrl + 'api/users/oauth/login/success', {
+        method: 'GET',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        //include http only cookies, use the 'same-origin' credentials to manipulate the cookie on the other end
+        credentials: 'include'
     })
     .then(response => {
             if (response.ok) {
-                console.log('response from users/facebook/toke was okay this is the RESPONSE:', response)
                 return response;
             } else {
                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
@@ -217,13 +231,11 @@ export const facebookLoginUser = creds => dispatch => {
     .then(response => response.json())
     .then(response => {
         if (response.success) {
-            // If login was successful, set the token in local storage
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('creds', JSON.stringify(creds));
-            // Dispatch the success action
-            // dispatch(fetchFavorites());
-            dispatch(receiveLogin(response));
+            localStorage.setItem('user', JSON.stringify(response.user));
+            dispatch(fetchFavorites())
+            dispatch(receiveLogin(response.user));
         } else {
+            localStorage.clear();
             const error = new Error('Error ' + response.status);
             error.response = response;
             throw error;
@@ -232,34 +244,94 @@ export const facebookLoginUser = creds => dispatch => {
     .catch(error => dispatch(loginError(error.message)))
 };
 
-// //handle login and authentication
-// export const facebookRequestLogout = () => {
-//     return {
-//         type: actionTypes.LOGOUT_REQUEST
-//     }
-// }
-  
-// export const facebookReceiveLogout = () => {
-//     return {
-//         type: actionTypes.LOGOUT_SUCCESS
-//     }
-// }
+//sign up
+export const singupRequest = () => ({
+    type: actionTypes.SINGUP_REQUEST
+});
 
-// // Logs the user out
-// export const facebookLogoutUser = () => dispatch => {
-//     dispatch(requestLogout())
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('creds');
-//     // dispatch(favoritesFailed('Error 401: Unauthorized'));
-//     dispatch(receiveLogout())
-// }
+export const singupFailed = (errMess) => ({
+    type: actionTypes.SINGUP_FAILED,
+    payload: errMess
+});
 
-// github AUTH
-export const githubLoginUser = code => dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
+export const singupSuccess = () => ({
+    type: actionTypes.SINGUP_SUCCESS
+});
+
+//favorites
+export const postFavorite = (flight) => dispatch => {
     
-    dispatch(githubRequestLogin(code))
-    return fetch( baseUrl + `api/users/github/token?code=${code}`)
+    return fetch(baseUrl + 'api/favorites' , {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(flight),
+        credentials: 'include'
+    })
+    .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                localStorage.clear()
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => { throw error; }
+    )
+    .then(response => response.json())
+    .then(favorites => {
+        dispatch(addFavorites(favorites));
+    })
+    .catch(error => dispatch(favoritesFailed(error.message)));
+}
+
+export const deleteFavorite = flight => dispatch => {
+    return fetch(baseUrl + 'api/favorites/' + flight, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+    .then(response => {
+        console.log(response)
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => { throw error; }
+    )
+    .then(response => response.json())
+    .then(favorites => {
+        dispatch(addFavorites(favorites));
+    })
+    .catch(error => dispatch(favoritesFailed(error.message)));
+};
+
+export const favoritesLoading = () => ({
+    type: actionTypes.FAVORITES_LOADING
+});
+
+export const favoritesFailed = errMess => ({
+    type: actionTypes.FAVORITES_FAILED,
+    payload: errMess
+});
+
+export const addFavorites = favorites => ({
+    type: actionTypes.ADD_FAVORITES,
+    payload: favorites
+});
+
+export const fetchFavorites = () => dispatch => {
+    dispatch(favoritesLoading());
+
+    return fetch(baseUrl + 'api/favorites', {
+        credentials: 'include',
+    })
     .then(response => {
             if (response.ok) {
                 return response;
@@ -272,48 +344,8 @@ export const githubLoginUser = code => dispatch => {
         error => { throw error; }
     )
     .then(response => response.json())
-    .then(response => {
-        if (response.success) {
-            // If login was successful, set the token in local storage
-            console.log(response.profile)
-            
-            // Dispatch the success action
-            // dispatch(fetchFavorites());
-            dispatch(githubRecieveLogin(response.profile));
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('creds', response.profile);
-        } else {
-            const error = new Error('Error ' + response.status);
-            error.response = response;
-            throw error;
-        }
-    })
-    .catch(error => dispatch(loginError(error.message)))
-};
-
-//handle login and authentication for github only because of their code-bearer-token strategy
-
-export const githubRequestLogin = code => {
-    return {
-        type: actionTypes.GITHUB_LOGIN_REQUEST,code
-    }
+    .then(favorites => {
+       
+        dispatch(addFavorites(favorites))})
+    .catch(error => dispatch(favoritesFailed(error.message)));
 }
-  
-export const githubRecieveLogin = profile => {
-    return {
-        type: actionTypes.GITHUB_LOGIN_SUCCESS,
-        profile
-    }
-}
-
-
-// // Logs the user out
-// export const githubLogoutUser = () => dispatch => {
-//     dispatch(requestLogout())
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('creds');
-//     // dispatch(favoritesFailed('Error 401: Unauthorized'));
-//     dispatch(receiveLogout())
-// }
-
-

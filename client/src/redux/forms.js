@@ -1,4 +1,5 @@
-export const SearchFlights = {flightClass: 'economy',
+export const SearchFlights = {
+    flightClass: 'economy',
     oneWay: true,
     passengers: {
         adults: 1,
