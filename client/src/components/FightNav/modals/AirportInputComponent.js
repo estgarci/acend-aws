@@ -69,7 +69,7 @@ function AirportInput(props) {
   const airportSearch = (text) => {
     //using regex to perform string match
     const textRegex = new RegExp(`${text}`, "gi");
-    //first we search the list of all props.countries, incase user wants to go to france but doesent know the name of the airports in FR
+    //first we search the list of all props.countries, just in case user wants to go to france but he doesent know the name of the airports in FR
     var countryMatch = props.countries.countries.filter(country => 
       country.englishShortName.match(textRegex));
     if(countryMatch.length){
