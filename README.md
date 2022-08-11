@@ -20,9 +20,9 @@ This set of requirements, makes the project a great vehicle for learning more ab
 
 # Specifications
 ### Front
-*	Built the front end using React as a framework
-*	Managed the state w/ React redux
-*	Styled the components w/ Bootstrap & managed the CSS w/ SCSS
+*	Built front end using React as a framework
+*	Managed state w/ React redux
+*	Styled components w/ Bootstrap & managed CSS w/ SCSS
 *	Managed animations w/ libraries like Tippy & Framer motion
 *	Built a controlled form w/ validation using libraries like Formik & Yup
 *	Designed the web app using Adobe XD
