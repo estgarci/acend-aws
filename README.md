@@ -1,22 +1,25 @@
 # Acend
-Acend is an airline webapp
-It communicates with a proprietary API and displays the real-time list of flights scheduled at an airport. The project was built using the MERN stack (MongoDB, Express, React, Node) and deployed using AWS. With this project, I aim to showcase my ability to design, build and deploy a full-stack web app.
+Acend is a live airline web app.
+Acend communicates with an API and displays the list of flights scheduled at any major airport. The project was built using the MERN stack (MongoDB, Express, React, Node) and deployed using AWS.
 ***
 ![Screenshot](acend-site.png)
 ***
 # Purpose
 I was inspired by travel websites like Volaris or Expedia, they have a responsive and minimalistic design. I thought that an interactive widget would be a great way to challenge my knowledge of the MERN stack.
+
 There are a few reasons why I think that a travel widget is a great way to learn more about the MERN stack:
+
 1.	Animations in a responsive widget require careful state management
-2.	The display of resources requires communication with a private API
+2.	The display of resources requires communication with a production-ready API
 3.	Favoriting a resource requires user authentication and authorization
 4.	Deploying a website requires secure HTTP communications and DNS configuration
 5.	Hosting a modern web app requires the use of cloud technologies like AWS
-6.	A unique project requires unique solutions
+6.	The uniqueness of the project will require unique solutions
 
-These requirements make the project a great vehicle for learning. 
+This set of requirements, makes the project a great vehicle for learning more about the full stack. 
 
 # Specifications
+These are the technologies used in the project:
 ## Front
 *	Built the front end using React as a framework
 *	Managed the state w/ React redux
@@ -26,7 +29,7 @@ These requirements make the project a great vehicle for learning.
 *	Designed the web app using Adobe XD
 *	Ensured responsiveness and compatibility w/ mobile devices
 ## Middle
-*	Configured a cloud server and deployed the web app using an AWS EC2 instance
+*	Deployed the web app using an AWS EC2 instance
 *	Configured the DNS and TLS with Cloudflare
 ## Back
 *	Built a custom RESTful API using the Express library w/ Node
@@ -35,5 +38,12 @@ These requirements make the project a great vehicle for learning.
 *	Used Mongo as a non-relational database, w/ the help of libraries like Mongoose
 *	Implemented Google’s O Auth 2.0 token strategy with Passport.js
 *	Used JSON Web Tokens and signed cookies to handle all authorization on the server endpoints
+
 # Future improvements
-* 
+These are some of the improvements that could make a better project
+* Refactor SCSS, define a nomanclature for classes
+* Rearange the folder structure
+* Implement the use of a refresh token for server authorization
+* Implement Twitter's and Github's O Auth 2.0 token strategy
+* Build a card that shows more details about a selected flight
+* Optimize for accesibility
