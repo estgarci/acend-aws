@@ -11,20 +11,20 @@ There are a few reasons why I think that a travel widget is a great way to learn
 6.	A unique project requires unique solutions
 # Specifications
 ## The front
-•	Built the front end using React as a framework
-•	Managed the state w/ React redux
-•	Styled the components w/ Bootstrap & managed the CSS w/ SCSS
-•	Managed animations w/ libraries like Tippy & Framer motion
-•	Built a controlled form w/ validation using libraries like Formik & Yup
-•	Designed the web app using Adobe XD
-•	Ensured responsiveness and compatibility w/ mobile devices
+*	Built the front end using React as a framework
+*	Managed the state w/ React redux
+*	Styled the components w/ Bootstrap & managed the CSS w/ SCSS
+*	Managed animations w/ libraries like Tippy & Framer motion
+*	Built a controlled form w/ validation using libraries like Formik & Yup
+*	Designed the web app using Adobe XD
+*	Ensured responsiveness and compatibility w/ mobile devices
 ## The middle
-•	Configured a cloud server and deployed the web app using an AWS EC2 instance
-•	Configured the DNS and TLS with Cloudflare
+*	Configured a cloud server and deployed the web app using an AWS EC2 instance
+*	Configured the DNS and TLS with Cloudflare
 ## The back
-•	Built a custom RESTful API using the Express library w/ Node
-•	Built an endpoint that supplies resources from an external API
-•	Added support for sign up, log in & adding/deleting favorites
-•	Used Mongo as a non-relational database, w/ the help of libraries like Mongoose
-•	Implemented Google’s O Auth 2.0 token strategy with Passport.js
-•	Used JSON Web Tokens and signed cookies to handle all authorization on the server endpoints
+*	Built a custom RESTful API using the Express library w/ Node
+*	Built an endpoint that supplies resources from an external API
+*	Added support for sign up, log in & adding/deleting favorites
+*	Used Mongo as a non-relational database, w/ the help of libraries like Mongoose
+*	Implemented Google’s O Auth 2.0 token strategy with Passport.js
+*	Used JSON Web Tokens and signed cookies to handle all authorization on the server endpoints
