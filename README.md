@@ -1,5 +1,6 @@
 # Acend
 Acend is a live web app. It’s an airline website that communicates with a proprietary API and displays the real-time list of flights scheduled at an airport. The project was built using the MERN stack (MongoDB, Express, React, Node) with Bootstrap and deployed using AWS. With this project, I aim to showcase my ability to design, build and deploy a full-stack web app.
+![Screenshot](acend-site.png)
 ***
 # Purpose
 I was inspired by travel websites like Volaris or Expedia, they have a responsive and minimalistic design. I thought that an interactive widget would be a great way to challenge my knowledge of the MERN stack.
