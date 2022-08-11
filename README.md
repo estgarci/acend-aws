@@ -12,6 +12,9 @@ There are a few reasons why I think that a travel widget is a great way to learn
 4.	Deploying a website requires secure HTTP communications and DNS configuration
 5.	Hosting a modern web app requires the use of cloud technologies like AWS
 6.	A unique project requires unique solutions
+
+The goal was to learn as much as posible and to use this project as a vehicle for learning.
+***
 # Specifications
 ## Front
 *	Built the front end using React as a framework
