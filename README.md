@@ -39,7 +39,7 @@ This set of requirements, makes the project a great vehicle for learning more ab
 *	Used JSON Web Tokens and signed cookies to handle all authorization on the server endpoints
 
 # Future improvements
-These are some of the improvements that could make a better project
+These are some of the improvements that could make this project into a better web app
 * Refactor SCSS, define a nomanclature for classes
 * Rearange the folder structure
 * Implement the use of a refresh token for server authorization
