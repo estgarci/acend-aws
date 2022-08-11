@@ -19,8 +19,7 @@ There are a few reasons why I think that a travel widget is a great way to learn
 This set of requirements, makes the project a great vehicle for learning more about the full stack. 
 
 # Specifications
-These are the technologies used in the project:
-## Front
+### Front
 *	Built the front end using React as a framework
 *	Managed the state w/ React redux
 *	Styled the components w/ Bootstrap & managed the CSS w/ SCSS
@@ -28,10 +27,10 @@ These are the technologies used in the project:
 *	Built a controlled form w/ validation using libraries like Formik & Yup
 *	Designed the web app using Adobe XD
 *	Ensured responsiveness and compatibility w/ mobile devices
-## Middle
+### Middle
 *	Deployed the web app using an AWS EC2 instance
 *	Configured the DNS and TLS with Cloudflare
-## Back
+### Back
 *	Built a custom RESTful API using the Express library w/ Node
 *	Built an endpoint that supplies resources from an external API
 *	Added support for sign up, log in & adding/deleting favorites
