@@ -5,7 +5,7 @@ Acend communicates with an API and displays the list of flights scheduled at any
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-I was inspired by travel websites like Volaris or Expedia, they have a responsive and minimalistic design. I thought that an interactive widget would be a great way to challenge my knowledge of the MERN stack.
+I was inspired by travel websites like Volaris or Expedia, they have a responsive and minimalistic design. An interactive widget is a great way to challenge my knowledge of the MERN stack.
 
 There are a few reasons why I think that a travel widget is a great way to learn more about the MERN stack:
 
