@@ -14,7 +14,7 @@ There are a few reasons why I think that a travel widget is a great way to learn
 3.	Favoriting a resource requires user authentication and authorization
 4.	Deploying a website requires secure HTTP communications and DNS configuration
 5.	Hosting a modern web app requires the use of cloud technologies like AWS
-6.	The uniqueness of the project would require unique solutions
+6.	The project is unique
 
 This set of requirements, makes the project a great vehicle for learning more about the full stack. 
 
