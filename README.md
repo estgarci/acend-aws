@@ -43,3 +43,4 @@ There are a few reasons why I think that a travel widget is a great way to learn
 * Build a card that shows more details about a selected flight
 * Optimize for accesibility
 * Improve flight recomendations
+* Add tests
