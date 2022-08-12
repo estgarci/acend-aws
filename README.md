@@ -5,7 +5,8 @@ Acend communicates with an API and displays the list of flights scheduled at any
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-I was inspired by travel websites like Volaris or Expedia, they have a responsive and minimalistic design. An interactive widget is a great way to challenge my knowledge of the MERN stack.
+I was inspired by travel websites like Volaris or Expedia, they have a responsive and minimalistic design. An interactive widget is a great way to challenge my knowledge of the MERN stack. 
+The main goal of the project was to use it as vehicle for learning new technologies.
 
 There are a few reasons why I think that a travel widget is a great way to learn more about the MERN stack:
 
@@ -14,11 +15,9 @@ There are a few reasons why I think that a travel widget is a great way to learn
 3.	Favoriting a resource requires user authentication and authorization
 4.	Deploying a website requires secure HTTP communications and DNS configuration
 5.	Hosting a modern web app requires the use of cloud technologies like AWS
-6.	The project is unique
+6.	The project is unique 
 
-This set of requirements, makes the project a great vehicle for learning more about the full stack. 
-
-# Specifications
+# What's in the stack?
 ### Front
 *	Used React as a framework
 *	Managed state w/ React redux
