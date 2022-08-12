@@ -26,7 +26,8 @@ There are a few reasons why I think that a travel widget is a great way to learn
 *	Ensured responsiveness and compatibility w/ mobile devices
 ### Middle
 *	Deployed using an AWS EC2 instance
-*	Configured the DNS and TLS with Cloudflare
+*	configured server w/ Nginx
+*	Configured the DNS & TLS w/ Cloudflare
 ### Back
 *	Built a custom RESTful API using the Express library w/ Node
 *	Built an endpoint that supplies resources from an external API
@@ -43,4 +44,4 @@ There are a few reasons why I think that a travel widget is a great way to learn
 * Build a card that shows more details about a selected flight
 * Optimize for accesibility
 * Improve flight recomendations
-* Add tests
+* Add support for testing in development mode
