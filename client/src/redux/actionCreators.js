@@ -181,6 +181,7 @@ export const requestLogout = () => {
     }
 }  
 export const receiveLogout = () => {
+    window.location.replace('/');
     return {
         type: actionTypes.LOGOUT_SUCCESS
     }
@@ -283,6 +284,7 @@ export const postFavorite = (flight) => dispatch => {
     )
     .then(response => response.json())
     .then(favorites => {
+       
         dispatch(addFavorites(favorites));
     })
     .catch(error => dispatch(favoritesFailed(error.message)));

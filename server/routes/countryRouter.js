@@ -27,7 +27,7 @@ countryRouter.route('/')
 })
 .delete(cors.corsWithOptions, authenticate.verifyAdmin,(req, res, next) => {
     res.statusCode = 403;
-    res.end('DELETE operation not supported on /countriess');
+    res.end('DELETE operation not supported on /countries');
 });
 
 countryRouter.route('/:countryId')

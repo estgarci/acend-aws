@@ -5,25 +5,20 @@ import PrivateRoutes from './utils/PrivateRoute';
 import Navbar from './Navbar';
 import Signup from './Signup';
 import Mytrips from './Mytrips';
-import { AuthProvider, useAuth } from '../hooks/useAuth';
+import { AuthProvider } from '../hooks/useAuth';
 import Singupsuccess from './Singupsuccess';
-import { fetchCountries, fetchAirports, fetchUser, loginUser, logoutUser, postFavorite, fetchFavorites  } from '../redux/actionCreators';
+import { fetchCountries, fetchAirports, fetchUser } from '../redux/actionCreators';
 import { useLocation, Routes, Route, useNavigate} from 'react-router-dom';
 import { AnimatePresence} from "framer-motion/dist/framer-motion";
+import Footer from './Footer';
 
 function Main(){
     const location = useLocation()
     const navigate = useNavigate()
-
     const airports = useSelector(state => state.airports)
     const flights = useSelector(state => state.flights)
     const countries = useSelector(state => state.countries)
-
-    const favorites = useSelector(state => state.favorites)
     const auth = useSelector(state => state.auth)
-
-    // const { user } = useAuth()
-
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -33,25 +28,26 @@ function Main(){
     }, [])
 
         return(
-        <div className="content-background">
-            <AuthProvider>
-            <Navbar/>
-            <AnimatePresence>
+            <AuthProvider >
+                <div className="content-background position-absolute"></div>
+                <Navbar/>
+                <div className='main-view'>
+                    <AnimatePresence >
+                        <Routes location={location} key={location.path}>
+                            <Route
+                                path ='/'
+                                element={<FlightSearch flights={flights} airports={airports} countries={countries} auth={auth}/>} exact/>
+                            <Route path='/signup' element={<Signup navigate={navigate}/>} />
+                            <Route path='/signup/success' element={<Singupsuccess/>} />
+                            <Route  path="/mytrips" element={<PrivateRoutes><Mytrips/></PrivateRoutes>}/>
+                        </Routes>
+                    </AnimatePresence>
+                </div>
+               
                 
-                    <Routes location={location} key={location.path}>
-                        <Route
-                            path ='/'
-                            element={<FlightSearch flights={flights} airports={airports} countries={countries} auth={auth}/>} exact/>
-                        <Route path='/signup' element={<Signup navigate={navigate}/>} />
-                        <Route path='/signup/success' element={<Singupsuccess/>} />
-                        <Route path="/mytrips" element={<PrivateRoutes/>}>
-                            <Route path="" element={<Mytrips/>}/>
-                        </Route>
-                    </Routes>
-                
-            </AnimatePresence>
+                <Footer className="bg-white mt-5"/> 
             </AuthProvider>
-        </div>
+       
         )
 }
 

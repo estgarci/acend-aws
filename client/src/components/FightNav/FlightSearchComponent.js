@@ -95,13 +95,13 @@ const FlightSearch = (props) => {
     <motion.div initial={{opacity: .2}} animate={{opacity: 1}} exit={{opacity:.2}}>
       <div id="flights-nav" className="container-sm main-box ">
         <Row id="topRow" className="mb-3">
-          <Col xs={12} sm={6}className="text-left">
+          <Col xs={12} sm={6}className="text-left text-nowrap">
             <ButtonGroup className="roundtripBtnGroup">
               <Button size="sm" outline color="primary" className="w115 text-left text-sm-center" onClick={() => setFlightSearchInfo(prevState => ({...prevState, ["roundTrip"]: true }))} active={flightSearchInfo.roundTrip === true}>Round Trip</Button>
               <Button size="sm" outline color="primary" className="w115 text-left text-sm-center" onClick={() => setFlightSearchInfo(prevState => ({...prevState, ["roundTrip"]: false }))} active={flightSearchInfo.roundTrip === false}>One Way</Button>
             </ButtonGroup>
           </Col>
-          <Col xs={12} sm={6} className="text-left text-sm-right">
+          <Col xs={12} sm={6} className="text-left text-sm-right text-nowrap">
               <FlightTravelers  setFlightSearchInfo={setFlightSearchInfo} flightSearchInfo={flightSearchInfo} setVisibleModal={setVisibleModal} visibleModal={visibleModal}/>
               <FlightClass  setFlightSearchInfo={setFlightSearchInfo} flightSearchInfo={flightSearchInfo} setVisibleModal={setVisibleModal} visibleModal={visibleModal}/>
           </Col>
@@ -155,7 +155,10 @@ const FlightSearch = (props) => {
           </Col>
         </Row>  
       </div>
-      <FlightDisplay/>
+      
+        <FlightDisplay/>
+    
+      
     </motion.div>
   );
 };

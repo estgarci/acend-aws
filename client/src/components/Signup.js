@@ -81,7 +81,7 @@ const Signup = (props) => {
 
 
     return (
-        <motion.div className='container-sm text-center sign-up-box' initial={{opacity: .2}} animate={{opacity: 1}} exit={{opacity:.2}}>
+        <motion.div className=' text-center sign-up-box' initial={{opacity: .2}} animate={{opacity: 1}} exit={{opacity:.2}}>
             <Formik
                 initialValues={{
                     firstname: '',

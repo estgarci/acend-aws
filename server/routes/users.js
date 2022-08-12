@@ -91,8 +91,7 @@ usersRouter.route('/logout')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.corsWithOptions,
         authenticate.verifyUser,
-        (req, res, next) => {
-            
+        (req, res, next) => { 
             if (req.user) {
                 console.log('logging out user')
                 res.clearCookie('token', {maxAge:1})

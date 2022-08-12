@@ -7,9 +7,7 @@ import SingleFlightDisplay from './FightNav/SingleFlightDisplay';
 import { useEffect } from 'react';
 import {useAuth} from '../hooks/useAuth';
 function Mytrips() {
-    
     const favoriteFlights = useSelector(state => state.favorites)
-
     const flightsList = favoriteFlights.favorites.map(flight => {
         return (
             <SingleFlightDisplay key={flight.fa_flight_id} flight={flight} isFavorite={true}/>

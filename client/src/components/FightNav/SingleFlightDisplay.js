@@ -19,7 +19,8 @@ function SingleFlightDisplay({flight, isFavorite}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true)
-    const { user } = useAuth();
+
+    const { auth } = useAuth();
 
     const getNormalTime = (dateObj) => {
         //returns normal value given military time
@@ -35,7 +36,7 @@ function SingleFlightDisplay({flight, isFavorite}) {
     
     const handleFavorite = () => {
 
-        if (user){
+        if (auth.user.username){
             if (!favorite) {
                 //to post a favorite, we need a whole object
                 dispatch(postFavorite(flight))

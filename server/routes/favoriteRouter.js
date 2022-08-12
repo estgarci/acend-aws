@@ -2,15 +2,12 @@ const express = require('express');
 const favoriteRouter = express.Router();
 const authenticate = require('../authenticate');
 const Favorite = require('../models/favorite');
-const Flight = require('../models/flight');
-const User = require('../models/user');
 const cors = require('./cors');
 
 favoriteRouter.route('/')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
     Favorite.findOne({user: req.user._id})
-    // User.findOne({_id: req.user._id})
     .then(favorite => {
         if (!favorite.flights) {
             res.statusCode = 200;
@@ -25,32 +22,36 @@ favoriteRouter.route('/')
     .catch(err => {next(err)});
 })
 .post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+    console.log('about to look for a user with ')
     Favorite.findOne({user: req.user._id})
     .then(favorite => {
+        //finding row
+        // console.log('finding row', favorite.flights.slice(-1)[0].fa_flight_id, req.body.fa_flight_id)
         if (favorite) {
-            if ((!favorite.flights.some(flight => flight.fa_flight_id == req.body.fa_flight_id))) {
+            console.log('favorite row has been found')
                 favorite.flights.push(req.body)
+                console.log('about to save...', favorite)
                 favorite.save()
                 .then(favorite => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.json({"exists": true, "flights": favorite.flights});
                 })
-                .catch(err => next(err));
-            }
-            else {
+                .catch(err =>{  console.log('This favorite has already been added', err);
                 res.statusCode = 200;
-                res.setHeader('Content-Type', 'text/plain');
-                res.json({"exists": true, "flights": favorite.flights});
-            }
+                res.json({"exists": true, "flights": favorite.flights});next(err)});
+        
         } else {
+            console.log('creating a new row in the the favorites table')
             Favorite.create({user: req.user._id, flights: [{...req.body}]})
                 .then(favorite => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.json({"exists": true, "flights": favorite.flights});
                 })
-                .catch(err => next(err))
+                .catch(err => {
+                    console.log('could not create a row? why?', 'body:', req.body)
+                    next(err)})
         }
     }).catch(err => next(err));
 })
@@ -60,37 +61,6 @@ favoriteRouter.route('/')
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 favoriteRouter.route('/:flight')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .delete(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
@@ -98,16 +68,13 @@ favoriteRouter.route('/:flight')
     Favorite.findOne({user: req.user._id })
     .then(favorite => {
         if (favorite) {
-            console.log('user has favorites')
             const index = 0;
             favorite.flights.forEach((flight,i) => {
                     if(flight.fa_flight_id == req.params.flight){
                         favorite.flights.splice(i, 1);
             }})
-          
             favorite.save()
             .then(favorite => {
-                console.log(favorite.flights.length)
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
                 res.json({"exists": false, "flights": favorite.flights});

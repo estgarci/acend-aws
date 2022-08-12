@@ -12,12 +12,15 @@
 
 
 .main-nav {
-
+  position: absolute;
+  z-index: 1000;
+  
+  
   #main-logo{
     font-size: 2rem;
   }
 
-  letter-spacing: 0.33rem;
+  letter-spacing: 0.27rem;
   background-color: $background-transparent;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
   font-size: 1rem;
@@ -54,7 +57,7 @@
     border:0px;
     box-shadow:none;
     border-radius: 1px;
-    margin-top: .5rem;
+    margin-top: .5rem; 
   }
 
   .dropdown-item{
@@ -70,8 +73,13 @@
   }
 
 
-
+    a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
 }
+  }
+
+
 
 .main-nav-modal{
 
@@ -115,10 +123,6 @@
   }
 
 }
-
-
-
-
 
 .divider {
 

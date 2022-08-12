@@ -16,12 +16,7 @@ function NavComponent(){
   const navigate = useNavigate()
   const dispatch = useDispatch()
   // const auth = useSelector(state => state.auth)
-  const {user, auth} = useAuth()
-
-  useEffect(() => {
-    console.log(auth.user.username)
-  }, [auth])
-
+  const {auth} = useAuth()
   const [modalOpen, setModalOpen] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -35,12 +30,13 @@ function NavComponent(){
     event.preventDefault()
     toggleModal();
     dispatch(loginUser({ 'username': username, 'password': password}));
-    navigate('/')
+    // setAuth('user')
   }
 
-  const handleLogout = () => {
+  const handleLogout = (event) => {
+    event.preventDefault();
     dispatch(logoutUser());
-    
+
   }
 
   const google = () => {
@@ -49,39 +45,37 @@ function NavComponent(){
 
   return (
     <>
-    <Navbar id="main-nav" className="main-nav container-fluid pb-0 pt-0" light expand="md">
-    <Container className="d-flex p-0">
-        <NavLinkRouter id="main-logo" className='nav-item logo' to='/' >Acend</NavLinkRouter>
-      <Nav navbar className="ml-auto justify-content-around">
+    <Navbar id="main-nav" className="main-nav container-fluid p-0 " light expand="md">
+      <Container className='px-3 p-sm-0'>
+      <NavLinkRouter id="main-logo" className='nav-item logo' to='/' >
+        Acend
+      </NavLinkRouter>
+      <Nav navbar className="">
         { !auth.user.username?
-              <NavItem className="">
-                <NavLink href="#" onClick={toggleModal}>
-                  <FontAwesomeIcon className="mr-2" icon="sign-in-alt"/>Sign in</NavLink>
-              </NavItem>               
+          <NavItem className="">
+            <NavLink href="#" onClick={toggleModal}>
+              <FontAwesomeIcon className="mr-2" icon="sign-in-alt"/>Sign in</NavLink>
+          </NavItem>               
           :
-            <>
-                <UncontrolledDropdown className="text-center" nav inNavbar>
-                  <DropdownToggle className="" nav caret>
-                      {
-                      auth.user.firstname.charAt(0).toUpperCase() + auth.user.firstname.substr(1)} 
-                  </DropdownToggle>
-                  <DropdownMenu className="" right>
-                  <DropdownItem id="" className="">
-                    <NavLinkRouter to="/mytrips">My trips</NavLinkRouter>
-                  </DropdownItem>
-                    
-                    <DropdownItem id="singout-button" className="" onClick={handleLogout}>
-                      Sing out
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-           
-            </>
-          }                   
-      </Nav>               
-     </Container>    
+          <UncontrolledDropdown className="">
+            <DropdownToggle className="" nav caret>
+                {
+                auth.user.firstname.charAt(0).toUpperCase() + auth.user.firstname.substr(1)} 
+            </DropdownToggle>
+            <DropdownMenu className="text-center" right>
+            <NavLinkRouter to="/mytrips">
+              <DropdownItem id="" className="mytrips-button">
+                My trips
+              </DropdownItem>
+            </NavLinkRouter>
+              <DropdownItem id="singout-button" className="" onClick={(event) => handleLogout(event)}>
+                Sing out
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown> }                   
+      </Nav>
+      </Container>             
      </Navbar>
-    {/* *****modal***** */}
     <Modal size='sm' isOpen={modalOpen} toggle={toggleModal}>
         <ModalBody className='main-nav-modal'>
               <Col xs='12' className=''>
