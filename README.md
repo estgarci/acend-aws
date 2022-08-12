@@ -1,5 +1,5 @@
 # Acend
-[www.acend.site](www.acend.site) is a live airline web app.
+[www.Acend.site](www.acend.site) is a live airline web app.
 Acend communicates with an API and displays the list of flights scheduled at any major airport. The project was built using the MERN stack (MongoDB, Express, React, Node) and deployed using AWS.
 ***
 ![Screenshot](acend-site.png)
