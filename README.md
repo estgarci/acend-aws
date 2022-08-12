@@ -19,15 +19,14 @@ There are a few reasons why I think that a travel widget is a great way to learn
 
 # What's in the stack?
 ### Front
-*	Used React as a framework
+*	Used React + Boostrap
 *	Managed state w/ React redux
 *	Styled components w/ Bootstrap & managed CSS w/ SCSS
 *	Managed animations w/ libraries like Tippy & Framer motion
 *	Built a controlled form w/ validation using libraries like Formik & Yup
-*	Designed using Adobe XD
 *	Ensured responsiveness and compatibility w/ mobile devices
 ### Middle
-*	Deployed the web app using an AWS EC2 instance
+*	Deployed using an AWS EC2 instance
 *	Configured the DNS and TLS with Cloudflare
 ### Back
 *	Built a custom RESTful API using the Express library w/ Node
@@ -38,10 +37,10 @@ There are a few reasons why I think that a travel widget is a great way to learn
 *	Used JSON Web Tokens and signed cookies to handle all authorization on the server endpoints
 
 # Future improvements
-These are some of the improvements that could make this project into a better web app
 * Refactor SCSS, define a nomanclature for classes
 * Rearange the folder structure
 * Implement the use of a refresh token for server authorization
 * Implement Twitter's and Github's O Auth 2.0 token strategy
 * Build a card that shows more details about a selected flight
 * Optimize for accesibility
+* Improve flight recomendations
