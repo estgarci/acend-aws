@@ -5,7 +5,7 @@ Acend communicates with an API and displays the list of flights scheduled at any
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-I was inspired by travel websites such as [www.volaris.mx](Volaris) or [www.expedia.com](Expedia). I used them as an example because they have a responsive and minimalistic design. 
+I was inspired by travel websites such as [Volaris](www.Volaris.com) or [Expedia](www.Expedia.com). I used them as an example because they have a responsive and minimalistic design. 
 The main objective of the project was to use it as vehicle for learning. I wanted to learn more about; JWTs, OAuth, communications with an API, state management with redux and migrating to functinoal components in React.
 
 # What's in the stack?
