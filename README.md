@@ -5,11 +5,10 @@ Acend communicates with an API and displays the list of flights scheduled at any
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-I was inspired by travel websites such as Volaris or Expedia because they have a responsive and minimalistic design.
-The goal of the project was to use it as vehicle for learning.
+I was inspired by travel websites such as Volaris or Expedia. I used them as an example because they have a responsive and minimalistic design. 
+The main objective of the project was to use it as vehicle for learning. I wanted to learn more about; JWT's, O Auth, communications with an API, state management with redux and migrating to functinoal components in React.
 
-A travel widget is a great way to learn more about the MERN stack. 
-
+A travel widget is a great way to learn more about the MERN stack.
 These are the reasons why:
 
 1.	Animations in a responsive widget require careful state management
