@@ -20,18 +20,18 @@ These are the reasons why:
 6.	The project is unique 
 
 # What's in the stack?
-### Front
+### Front end
 *	Used React + Boostrap
 *	Managed state w/ React redux
 *	Styled components w/ Bootstrap & managed CSS w/ SCSS
 *	Managed animations w/ libraries like Tippy & Framer motion
 *	Built a controlled form w/ validation using libraries like Formik & Yup
 *	Ensured responsiveness and compatibility w/ mobile devices
-### Middle
+### The Middle
 *	Deployed using an AWS EC2 instance
 *	configured server w/ Nginx
 *	Configured the DNS & TLS w/ Cloudflare
-### Back
+### Back end
 *	Built a custom RESTful API using the Express library w/ Node
 *	Built an endpoint that supplies resources from an external API
 *	Added support for sign up, log in & adding/deleting favorites
