@@ -2,6 +2,7 @@
   "name": "acend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://acend.site",
   "dependencies": {
     "@bootstrap-styled/provider": "^2.0.3",
     "@bootstrap-styled/v4": "^3.4.0",
