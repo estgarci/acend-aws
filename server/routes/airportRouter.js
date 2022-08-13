@@ -32,7 +32,6 @@ airportRouter.route('/')
     res.end('DELETE operation not supported on /airports');
 });
 
-
 airportRouter.route('/:airportId')
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
 .get(cors.cors, (req, res, next) => {
