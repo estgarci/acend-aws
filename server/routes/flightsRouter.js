@@ -16,26 +16,27 @@ flightsRouter.route('/')
             {
                 headers:{
                     'x-apikey' : process.env.AERO_API_KEY}})
-            .then((response) => response.json())
             .then((response) => {
-                console.log(response)
-                if(response.status == 200){
-                    res.statusCode = 200;
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(response.flights.map(item => item.segments[0]));
+                if (response.status == 200){
+                    return response.json()
                 }
                 else{
                     const err = new Error('Flights not found between origin and destination');
                     err.status = 404;
                     return next();
                 }
+            })
+            .then((response) => {
+                res.statusCoDde = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.send(response.flights.map(item => item.segments[0]));
             })    
             .catch(() => {
-                    const err = new Error('Flights not found between origin and destination');
-                    err.status = 404;
-                    return next(err);
+                const err = new Error('Something with searching flights went wrong');
+                err.status = 404;
+                return next(err);
             });
-    } 
+    }
 })
 
 module.exports = flightsRouter;
