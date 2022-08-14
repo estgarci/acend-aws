@@ -24,7 +24,6 @@ const airportRouter = require('./routes/airportRouter');
 const countryRouter = require('./routes/countryRouter');
 
 const mongoose = require('mongoose');
-
 const url = 'mongodb://localhost:27017/acend';
 const connect = mongoose.connect(url, {
     useCreateIndex: true,
