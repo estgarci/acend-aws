@@ -1,5 +1,5 @@
 # Acend
-[https://www.acend.site](www.acend.site) is a live airline web app. It communicates with an API that provides users with Real-time worldwide flight traffic. 
+[https://www.acend.site](www.acend.site) is a live airline web app. It communicates with an API that provides real-time worldwide flight traffic data.
 This demo project was built using the MERN stack (MongoDB, Express, React, Node) and deployed using an AWS EC2 instance.
 ***
 ![Screenshot](acend-site.png)
