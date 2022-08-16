@@ -6,7 +6,7 @@ This demo project was built using the MERN stack (MongoDB, Express, React, Node)
 ***
 # Purpose
 I was inspired by travel websites such as [Volaris](https://www.volaris.com) or [Expedia](https://www.expedia.com). I used them as an example because they have a responsive and minimalistic design. 
-The main objective of the project was to use it as vehicle for learning. I wanted to learn more about JWTs, OAuth, communications with an API, state management with redux and migrating to functinoal components in React.
+The main objective of the project was to use it as vehicle for learning. I wanted to learn more about JWTs, OAuth, communications with an API, state management with redux.
 
 # What's in the full stack?
 ### Front end
