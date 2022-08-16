@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { postFavorite, flights} from '../../redux/actionCreators';
 import {useDispatch, useEffect, useSelector} from 'react-redux'
 
-
 import {fetchFavorites, deleteFavorite } from '../../redux/actionCreators'
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
@@ -80,7 +79,12 @@ function SingleFlightDisplay({flight, isFavorite}) {
                     </Col>
                 </Row>
             </div>
-            <PopUpMessage show={show} handleClose={handleClose}/></>
+            <PopUpMessage 
+                title="Please sing in"
+                message="Please create an account and sing in to favorite a flight!"
+                show={show}
+                handleClose={handleClose}/>
+            </>
     );
 }
 

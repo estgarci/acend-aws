@@ -15,7 +15,6 @@ import { ConfigureStore } from './redux/configureStore';
 // import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import {BrowserRouter} from 'react-router-dom';
 import Main from './components/MainComponent';
-import Signup from './components/Signup';
 
 //adding a library supports "tree shaking", getting rid of anything that is not being used in your could
 library.add(faTwitter, faThumbsUp, faPlaneDeparture, faPlaneArrival, faCalendarAlt, faGlobeAmericas, faSignInAlt, faPlus, faMinus, faFulcrum, faLevelUpAlt, faShoppingCart, faSignOutAlt, faHeart, faGithub, fab);

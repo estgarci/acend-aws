@@ -10,19 +10,23 @@ import { NavLink as NavLinkRouter, useNavigate } from 'react-router-dom';
 import {loginUser, logoutUser} from '../redux/actionCreators';
 import {useDispatch, useSelector} from 'react-redux'
 import { useAuth } from '../hooks/useAuth';
+import PopUpMessage from './PopUpMessage';
 
 function NavComponent(){
-
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   // const auth = useSelector(state => state.auth)
   const {auth} = useAuth()
   const [modalOpen, setModalOpen] = useState(false)
+  const [googleModal, setGooglemodal] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const toggleModal = () => {
     setModalOpen(!modalOpen)
+  }
+
+  const toggleGoogle = () => {
+    setGooglemodal(!googleModal)
   }
 
   const handleLogin = (event) => {
@@ -40,7 +44,7 @@ function NavComponent(){
   }
 
   const google = () => {
-    window.open(baseUrl + 'api/users/google', "_self")
+    //window.open(baseUrl + 'api/users/google', "_self")
   }
 
   return (
@@ -101,12 +105,18 @@ function NavComponent(){
                 </Row>
                 <h1>Or</h1>
                 <Row className='justify-content-center'>
-                  <GoogleButton type='light' onClick={google}/>
+                  <GoogleButton type='light' onClick={toggleGoogle}/>
                 </Row>
               </Col>
         </ModalBody>
     </Modal>
-    </>)
+    <PopUpMessage 
+                title="This button only works in dev mode"
+                message="This app is undergoing Google's OAuth verification process that can take up to 6 weeks."
+                show={googleModal}
+                handleClose={toggleGoogle}/>
+    </>
+    )
 }
 
 export default NavComponent;

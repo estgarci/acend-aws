@@ -25,8 +25,6 @@ favoriteRouter.route('/')
     console.log('about to look for a user with ')
     Favorite.findOne({user: req.user._id})
     .then(favorite => {
-        //finding row
-        // console.log('finding row', favorite.flights.slice(-1)[0].fa_flight_id, req.body.fa_flight_id)
         if (favorite) {
             console.log('favorite row has been found')
                 favorite.flights.push(req.body)
@@ -64,7 +62,6 @@ favoriteRouter.route('/')
 favoriteRouter.route('/:flight')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .delete(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
-    
     Favorite.findOne({user: req.user._id })
     .then(favorite => {
         if (favorite) {

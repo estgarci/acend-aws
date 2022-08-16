@@ -130,6 +130,7 @@ function AirportInput(props) {
               <input type="text"
                      id="airport"
                      name="airport"
+                     autoComplete='off'
                      className='b-0'
                      placeholder="Airport, Country or city"
                      onChange={ e => { onChangeHandler(e.target.value) } }

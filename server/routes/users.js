@@ -136,7 +136,10 @@ usersRouter.route('/oauth/login/success')
 usersRouter.route('/google')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.corsWithOptions,
-        passport.authenticate("google", { scope: ["profile"], accessType: 'offline', prompt: 'consent'}));
+        passport.authenticate("google", { scope: ["profile"], accessType: 'offline', prompt: 'consent'}),
+        (req, res) => {
+            console.log(res)
+        });
 
 usersRouter.route('/google/callback')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })

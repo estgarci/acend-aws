@@ -11,7 +11,6 @@ import { fetchCountries, fetchAirports, fetchUser } from '../redux/actionCreator
 import { useLocation, Routes, Route, useNavigate} from 'react-router-dom';
 import { AnimatePresence} from "framer-motion/dist/framer-motion";
 import Footer from './Footer';
-
 function Main(){
     const location = useLocation()
     const navigate = useNavigate()
@@ -38,16 +37,14 @@ function Main(){
                                 path ='/'
                                 element={<FlightSearch flights={flights} airports={airports} countries={countries} auth={auth}/>} exact/>
                             <Route path='/signup' element={<Signup navigate={navigate}/>} />
+                      
                             <Route path='/signup/success' element={<Singupsuccess/>} />
                             <Route  path="/mytrips" element={<PrivateRoutes><Mytrips/></PrivateRoutes>}/>
                         </Routes>
                     </AnimatePresence>
                 </div>
-               
-                
                 <Footer className="bg-white mt-5"/> 
             </AuthProvider>
-       
         )
 }
 
