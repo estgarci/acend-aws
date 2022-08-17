@@ -1,17 +1,6 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { Component } from 'react';
-// import GlobalStyle from './globalStyles';
-// import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import { faPlaneDeparture, faPlaneArrival, faCalendarAlt,  faGlobeAmericas, faSignInAlt, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
-import {faFulcrum} from '@fortawesome/free-brands-svg-icons';
-// import {ThemeProvider} from 'styled-components';
+
 
 import 'tippy.js/animations/perspective.css';
-
-import React from 'react';
-
-import { Provider } from 'react-redux';
-import { ConfigureStore } from './redux/configureStore';
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
