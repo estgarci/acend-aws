@@ -112,7 +112,7 @@ usersRouter.route('/login/failed')
 
 usersRouter.route('/oauth/login/success')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(cors.cors,
+    .get(cors.corsWithOptions,
         (req, res) => {
             passport.authenticate('jwt', {session: false}, (err, user, info) => {
                 if (err) {
