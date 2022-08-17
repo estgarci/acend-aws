@@ -1,6 +1,6 @@
 const cors = require('cors');
 // whitelist includes: requests from http, client and https
-const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://localhost:3443', 'https://127.0.0.1:3443', 'https://www.googleapis.com/auth/userinfo.profile', 'https://www.acend.site', 'http://3.133.254.105', 'https://'];
+const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://localhost:3443', 'https://127.0.0.1:3443', 'https://www.googleapis.com/auth/userinfo.profile', 'https://www.acend.site', 'https://acend.site','http://3.133.254.105'];
 
 const corsOptionsDelegate = (req, callback) => {
     let corsOptions;

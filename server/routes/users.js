@@ -4,27 +4,24 @@ const passport = require('passport');
 const authenticate = require('../authenticate');
 const cors = require('./cors');
 const config = require('../config');
-const fetch = require('cross-fetch');
-const axios = require('axios');
-const superAgent = require('superagent')
 const usersRouter = express.Router();
 
-usersRouter.route('/')
-    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(cors.corsWithOptions,
-    (req, res, next) => {
-        User.find()
-        .then(users => {
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            res.json(users);
-        })
-        .catch(err => next(err));
-});
+// usersRouter.route('/')
+//     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+//     .get(cors.corsWithOptions,
+//     (req, res, next) => {
+//         User.find()
+//         .then(users => {
+//             res.statusCode = 200;
+//             res.setHeader('Content-Type', 'application/json');
+//             res.json(users);
+//         })
+//         .catch(err => next(err));
+// });
 
 usersRouter.route('/singup')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .post(cors.corsWithOptions,
+    .post(cors.cors,
             (req, res) => {
                 User.register(
                     new User({
@@ -115,7 +112,7 @@ usersRouter.route('/login/failed')
 
 usersRouter.route('/oauth/login/success')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(cors.corsWithOptions,
+    .get(cors.cors,
         (req, res) => {
             passport.authenticate('jwt', {session: false}, (err, user, info) => {
                 if (err) {
