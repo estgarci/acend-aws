@@ -65,7 +65,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://wwww.acend.site",
+  "homepage": ".",
   "eslintConfig": {
     "extends": [
       "react-app",
