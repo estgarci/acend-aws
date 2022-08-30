@@ -9,7 +9,7 @@ The purpose of this project was to use it as a vehicle for learning. I wanted to
 
 # What's in the stack?
 ### Front end
-*	Used React + Boostrap
+*	Used React + Boostrap on the front-end
 *	Managed state w/ React redux
 *	Styled components w/ Bootstrap & managed CSS w/ SCSS
 *	Managed animations w/ libraries like Tippy & Framer motion
@@ -30,6 +30,7 @@ The purpose of this project was to use it as a vehicle for learning. I wanted to
 # Future improvements
 * Refactor SCSS, define a nomanclature for classes
 * Rearange the folder structure
+* Refactor code to utilize Reactstrap instead of React + Bootstrap
 * Implement the use of a refresh token for server authorization
 * Implement Twitter's and Github's O Auth 2.0 token strategy
 * Build a card that shows more details about a selected flight
