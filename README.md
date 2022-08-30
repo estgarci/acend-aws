@@ -7,7 +7,7 @@ This demo project was built using the MERN stack (MongoDB, Express, React, Node)
 # Purpose
 The purpose of this project was to use it as a vehicle for learning. I wanted to learn more about JSON Web Tokens, RESTful APIs, state management with react-redux, and deploying a website on the cloud using an AWS EC2 instance. I wanted to experience what it was like to work on every part of the stack, from design to deployment.
 
-# What's in the full stack?
+# What's in the stack?
 ### Front end
 *	Used React + Boostrap
 *	Managed state w/ React redux
