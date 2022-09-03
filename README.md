@@ -6,11 +6,6 @@
 # Purpose
 I used this project as a vehicle for learning. I wanted to experience what it was like to bring an idea to life and work on every aspect of a MERN (MongoDB, Express.js, React.js and Node.js) application, from design to deployment. 
 
-# Key features
-* Front was built with React + Bootstrap which ensures compatibility with mobile devices.
-* Custom RESTful API supports user authentication through Google with OAuth2.0.
-* App is hosted on AWS
-
 # What's in the stack?
 ### Front end
 *	Front end built w/ ReactStrap (React + Boostrap)
