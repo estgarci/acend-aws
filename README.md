@@ -5,12 +5,11 @@ This demo project was built using the MERN stack (MongoDB, Express, React, Node)
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-I was inspired by travel websites such as [Volaris](https://www.volaris.com) or [Expedia](https://www.expedia.com). I used them as an example because they have a responsive and minimalistic design. 
-The main objective of the project was to use it as vehicle for learning. I wanted to learn more about JWTs, OAuth, communications with an API, state management with redux.
+The purpose of this project was to use it as a vehicle for learning. I wanted to learn more about JSON Web Tokens, RESTful APIs, state management with react-redux, and deploying  a website on the cloud using an AWS EC2 instance. I wanted to experience what it was like to work on every part of the stack, from design to deployment.
 
-# What's in the full stack?
+# What's in the stack?
 ### Front end
-*	Used React + Boostrap
+*	Used React + Boostrap on the front-end
 *	Managed state w/ React redux
 *	Styled components w/ Bootstrap & managed CSS w/ SCSS
 *	Managed animations w/ libraries like Tippy & Framer motion
@@ -31,6 +30,7 @@ The main objective of the project was to use it as vehicle for learning. I wante
 # Future improvements
 * Refactor SCSS, define a nomanclature for classes
 * Rearange the folder structure
+* Refactor code to utilize Reactstrap instead of React + Bootstrap
 * Implement the use of a refresh token for server authorization
 * Implement Twitter's and Github's O Auth 2.0 token strategy
 * Build a card that shows more details about a selected flight
