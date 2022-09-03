@@ -1,11 +1,10 @@
 # Acend
-[https://www.acend.site](www.acend.site) is a live airline web app. It communicates with an API that provides real-time worldwide flight traffic data.
-This demo project was built using the MERN stack (MongoDB, Express, React, Node) and deployed using an AWS EC2 instance.
+[https://www.acend.site](www.acend.site) is a live airline web app that communicates with a private API that provides users with real-time worldwide flight traffic data.
 ***
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-The purpose of this project was to use it as a vehicle for learning. I wanted to learn more about JSON Web Tokens, RESTful APIs, state management with react-redux, and deploying  a website on the cloud using an AWS EC2 instance. I wanted to experience what it was like to work on every part of the stack, from design to deployment.
+I used this project as a vehicle for learning. I wanted to experience what it was like to bring an idea to life and work on every aspect of the application, from design to deployment. 
 
 # What's in the stack?
 ### Front end
