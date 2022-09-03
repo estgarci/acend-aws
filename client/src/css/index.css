@@ -10377,7 +10377,7 @@ button:hover {
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
   border-radius: 1px;
   padding: 1rem;
-  min-width: 26rem;
+  width: 26rem;
   height: fit-content;
 }
 .sign-up-box .form-control {

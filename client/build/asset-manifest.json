@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "https://www.acend.site/static/css/main.db5ebc7e.chunk.css",
-    "main.js": "https://www.acend.site/static/js/main.222de43c.chunk.js",
-    "main.js.map": "https://www.acend.site/static/js/main.222de43c.chunk.js.map",
-    "runtime-main.js": "https://www.acend.site/static/js/runtime-main.abb3fc45.js",
-    "runtime-main.js.map": "https://www.acend.site/static/js/runtime-main.abb3fc45.js.map",
-    "static/css/2.c56f5e73.chunk.css": "https://www.acend.site/static/css/2.c56f5e73.chunk.css",
-    "static/js/2.f3d98d70.chunk.js": "https://www.acend.site/static/js/2.f3d98d70.chunk.js",
-    "static/js/2.f3d98d70.chunk.js.map": "https://www.acend.site/static/js/2.f3d98d70.chunk.js.map",
-    "static/js/3.196f4bb5.chunk.js": "https://www.acend.site/static/js/3.196f4bb5.chunk.js",
-    "static/js/3.196f4bb5.chunk.js.map": "https://www.acend.site/static/js/3.196f4bb5.chunk.js.map",
-    "index.html": "https://www.acend.site/index.html",
-    "static/css/2.c56f5e73.chunk.css.map": "https://www.acend.site/static/css/2.c56f5e73.chunk.css.map",
-    "static/css/main.db5ebc7e.chunk.css.map": "https://www.acend.site/static/css/main.db5ebc7e.chunk.css.map",
-    "static/js/2.f3d98d70.chunk.js.LICENSE.txt": "https://www.acend.site/static/js/2.f3d98d70.chunk.js.LICENSE.txt",
-    "static/media/index.css": "https://www.acend.site/static/media/cinquel2.ddebd37f.png",
-    "static/media/font-awesome.css": "https://www.acend.site/static/media/fontawesome-webfont.f691f37e.woff"
+    "main.css": "./static/css/main.5b7e064d.chunk.css",
+    "main.js": "./static/js/main.007dd2c5.chunk.js",
+    "main.js.map": "./static/js/main.007dd2c5.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.2c8e6299.js",
+    "runtime-main.js.map": "./static/js/runtime-main.2c8e6299.js.map",
+    "static/css/2.9217f311.chunk.css": "./static/css/2.9217f311.chunk.css",
+    "static/js/2.f3d98d70.chunk.js": "./static/js/2.f3d98d70.chunk.js",
+    "static/js/2.f3d98d70.chunk.js.map": "./static/js/2.f3d98d70.chunk.js.map",
+    "static/js/3.196f4bb5.chunk.js": "./static/js/3.196f4bb5.chunk.js",
+    "static/js/3.196f4bb5.chunk.js.map": "./static/js/3.196f4bb5.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.9217f311.chunk.css.map": "./static/css/2.9217f311.chunk.css.map",
+    "static/css/main.5b7e064d.chunk.css.map": "./static/css/main.5b7e064d.chunk.css.map",
+    "static/js/2.f3d98d70.chunk.js.LICENSE.txt": "./static/js/2.f3d98d70.chunk.js.LICENSE.txt",
+    "static/media/index.css": "./static/media/cinquel2.ddebd37f.png",
+    "static/media/font-awesome.css": "./static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.abb3fc45.js",
-    "static/css/2.c56f5e73.chunk.css",
+    "static/js/runtime-main.2c8e6299.js",
+    "static/css/2.9217f311.chunk.css",
     "static/js/2.f3d98d70.chunk.js",
-    "static/css/main.db5ebc7e.chunk.css",
-    "static/js/main.222de43c.chunk.js"
+    "static/css/main.5b7e064d.chunk.css",
+    "static/js/main.007dd2c5.chunk.js"
   ]
 }
