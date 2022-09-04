@@ -1,5 +1,5 @@
 # Acend
-[https://www.acend.site](www.acend.site) is a live airline web app that communicates with an API which provides real-time worldwide flight-traffic data.
+[https://www.acend.site](acend.site) is a live airline web app that communicates with a proprietary API and displays the real-time list of flights scheduled at any world-wide airport.
 ***
 ![Screenshot](acend-site.png)
 ***
