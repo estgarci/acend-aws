@@ -4,7 +4,7 @@
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-I used this project as a vehicle for learning. I wanted to experience what it was like to bring an idea to life and work on every aspect of a MERN (MongoDB, Express.js, React.js and Node.js) application, from design to deployment. 
+I used this project as a vehicle for learning. The goal was to work on every aspect of a MERN (MongoDB, Express.js, React.js and Node.js) application, from design to deployment. 
 
 # What's in the stack?
 ### Front end
