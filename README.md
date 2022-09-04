@@ -1,15 +1,14 @@
 # Acend
-[https://www.acend.site](www.acend.site) is a live airline web app. It communicates with an API that provides real-time worldwide flight traffic data.
-This demo project was built using the MERN stack (MongoDB, Express, React, Node) and deployed using an AWS EC2 instance.
+[https://www.acend.site](www.acend.site) is a live airline web app that communicates with an API which provides real-time worldwide flight-traffic data.
 ***
 ![Screenshot](acend-site.png)
 ***
 # Purpose
-The purpose of this project was to use it as a vehicle for learning. I wanted to learn more about JSON Web Tokens, RESTful APIs, state management with react-redux, and deploying  a website on the cloud using an AWS EC2 instance. I wanted to experience what it was like to work on every part of the stack, from design to deployment.
+I used this project as a vehicle for learning. I wanted to experience what it was like to bring an idea to life and work on every aspect of a MERN (MongoDB, Express.js, React.js and Node.js) application, from design to deployment. 
 
 # What's in the stack?
 ### Front end
-*	Used React + Boostrap on the front-end
+*	Front end built w/ ReactStrap (React + Boostrap)
 *	Managed state w/ React redux
 *	Styled components w/ Bootstrap & managed CSS w/ SCSS
 *	Managed animations w/ libraries like Tippy & Framer motion
@@ -23,7 +22,7 @@ The purpose of this project was to use it as a vehicle for learning. I wanted to
 *	Built a custom RESTful API using the Express library w/ Node
 *	Built an endpoint that supplies resources from an external API
 *	Added support for sign up, log in & adding/deleting favorites
-*	Used Mongo as a non-relational database, w/ the help of libraries like Mongoose
+*	Used Mongo as a non-relational database w/ the help of libraries like Mongoose
 *	Implemented Google’s O Auth 2.0 token strategy with Passport.js
 *	Used JSON Web Tokens and signed cookies to handle all authorization on the server endpoints
 
